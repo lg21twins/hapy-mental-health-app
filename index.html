@@ -1,1235 +1,2152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HAPY — Be Happy, With Hapy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --purple:       #9333ea;
-      --purple-dark:  #7c3aed;
-      --purple-mid:   #a855f7;
-      --purple-light: #c084fc;
-      --lavender:     #f5f0ff;
-      --lavender-2:   #ede9fe;
-      --white:        #ffffff;
-      --black:        #0a0a0a;
-      --gray:         #6b7280;
-      --gray-light:   #f9f9f9;
-    }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--white);
-      color: var(--black);
-      overflow-x: hidden;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAPY — Be Happy, With Hapy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --purple: #9333ea;
+        --purple-dark: #7c3aed;
+        --purple-mid: #a855f7;
+        --purple-light: #c084fc;
+        --lavender: #f5f0ff;
+        --lavender-2: #ede9fe;
+        --white: #ffffff;
+        --black: #0a0a0a;
+        --gray: #6b7280;
+        --gray-light: #f9f9f9;
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          sans-serif;
+        background: var(--white);
+        color: var(--black);
+        overflow-x: hidden;
+      }
 
-    /* ─── SCROLLBAR ─── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--lavender); }
-    ::-webkit-scrollbar-thumb { background: var(--purple-light); border-radius: 3px; }
+      /* ─── SCROLLBAR ─── */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--lavender);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--purple-light);
+        border-radius: 3px;
+      }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 60px;
-      background: transparent;
-      transition: background .3s, box-shadow .3s, padding .3s;
-    }
-    nav.scrolled {
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 2px 24px rgba(147,51,234,.12);
-      padding: 12px 60px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; }
-    .nav-logo svg { width: 52px; height: 28px; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--white); font-weight: 500;
-      font-size: .9rem; letter-spacing: .02em;
-      transition: opacity .2s;
-    }
-    nav.scrolled .nav-links a { color: var(--black); }
-    .nav-links a:hover { opacity: .65; }
-    .nav-cta {
-      background: var(--white); color: var(--purple);
-      border: none; padding: 10px 22px; border-radius: 999px;
-      font-weight: 700; font-size: .85rem; cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
-      letter-spacing: .03em;
-    }
-    nav.scrolled .nav-cta {
-      background: var(--purple); color: var(--white);
-    }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(147,51,234,.35); }
+      /* ─── NAV ─── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 60px;
+        background: transparent;
+        transition:
+          background 0.3s,
+          box-shadow 0.3s,
+          padding 0.3s;
+      }
+      nav.scrolled {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 2px 24px rgba(147, 51, 234, 0.12);
+        padding: 12px 60px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .nav-logo svg {
+        width: 52px;
+        height: 28px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--white);
+        font-weight: 500;
+        font-size: 0.9rem;
+        letter-spacing: 0.02em;
+        transition: opacity 0.2s;
+      }
+      nav.scrolled .nav-links a {
+        color: var(--black);
+      }
+      .nav-links a:hover {
+        opacity: 0.65;
+      }
+      .nav-cta {
+        background: var(--white);
+        color: var(--purple);
+        border: none;
+        padding: 10px 22px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        letter-spacing: 0.03em;
+      }
+      nav.scrolled .nav-cta {
+        background: var(--purple);
+        color: var(--white);
+      }
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(147, 51, 234, 0.35);
+      }
 
-    /* ─── HERO ─── */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #8b21e0 0%, #9333ea 40%, #a855f7 100%);
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden; padding: 120px 60px 80px;
-    }
-    .hero-bg-circle {
-      position: absolute; border-radius: 50%;
-      background: rgba(255,255,255,.05);
-    }
-    .hero-bg-circle.c1 { width: 600px; height: 600px; top: -200px; right: -150px; }
-    .hero-bg-circle.c2 { width: 400px; height: 400px; bottom: -100px; left: -80px; }
-    .hero-bg-circle.c3 { width: 200px; height: 200px; top: 40%; left: 30%; }
-    .hero-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-      max-width: 1200px; width: 100%; position: relative; z-index: 2;
-    }
-    .hero-text { color: var(--white); }
-    .hero-label {
-      display: inline-block;
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.3);
-      color: var(--white); font-size: .78rem; font-weight: 600;
-      padding: 6px 14px; border-radius: 999px; letter-spacing: .1em;
-      text-transform: uppercase; margin-bottom: 28px;
-    }
-    .hero-logo-wrap { margin-bottom: 20px; }
-    .hero-logo-wrap svg { width: 320px; height: auto; }
-    .hero-tagline {
-      font-size: 1.35rem; font-weight: 400; opacity: .85;
-      margin-bottom: 16px; letter-spacing: .02em;
-    }
-    .hero-desc {
-      font-size: 1rem; opacity: .7; line-height: 1.7;
-      max-width: 440px; margin-bottom: 40px;
-    }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn-store {
-      display: flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,.15);
-      border: 1.5px solid rgba(255,255,255,.4);
-      color: var(--white); padding: 12px 22px; border-radius: 12px;
-      font-size: .85rem; font-weight: 600; cursor: pointer;
-      text-decoration: none;
-      transition: background .2s, transform .2s, box-shadow .2s;
-      backdrop-filter: blur(8px);
-    }
-    .btn-store:hover {
-      background: rgba(255,255,255,.25);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.2);
-    }
-    .btn-store .store-icon { font-size: 1.5rem; }
-    .btn-store .store-text { text-align: left; line-height: 1.3; }
-    .btn-store .store-sub { font-size: .7rem; font-weight: 400; opacity: .8; }
-    .btn-store .store-name { font-size: .95rem; font-weight: 700; }
+      /* ─── HERO ─── */
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #8b21e0 0%,
+          #9333ea 40%,
+          #a855f7 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        padding: 120px 60px 80px;
+      }
+      .hero-bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .hero-bg-circle.c1 {
+        width: 600px;
+        height: 600px;
+        top: -200px;
+        right: -150px;
+      }
+      .hero-bg-circle.c2 {
+        width: 400px;
+        height: 400px;
+        bottom: -100px;
+        left: -80px;
+      }
+      .hero-bg-circle.c3 {
+        width: 200px;
+        height: 200px;
+        top: 40%;
+        left: 30%;
+      }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-text {
+        color: var(--white);
+      }
+      .hero-label {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: var(--white);
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 999px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+      .hero-logo-wrap {
+        margin-bottom: 20px;
+      }
+      .hero-logo-wrap svg {
+        width: 320px;
+        height: auto;
+      }
+      .hero-tagline {
+        font-size: 1.35rem;
+        font-weight: 400;
+        opacity: 0.85;
+        margin-bottom: 16px;
+        letter-spacing: 0.02em;
+      }
+      .hero-desc {
+        font-size: 1rem;
+        opacity: 0.7;
+        line-height: 1.7;
+        max-width: 440px;
+        margin-bottom: 40px;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .btn-store {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1.5px solid rgba(255, 255, 255, 0.4);
+        color: var(--white);
+        padding: 12px 22px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.2s,
+          box-shadow 0.2s;
+        backdrop-filter: blur(8px);
+      }
+      .btn-store:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .btn-store .store-icon {
+        font-size: 1.5rem;
+      }
+      .btn-store .store-text {
+        text-align: left;
+        line-height: 1.3;
+      }
+      .btn-store .store-sub {
+        font-size: 0.7rem;
+        font-weight: 400;
+        opacity: 0.8;
+      }
+      .btn-store .store-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
 
-    /* phone mockup */
-    .hero-phone {
-      display: flex; justify-content: center; align-items: flex-end;
-      position: relative;
-    }
-    .phone-wrap {
-      position: relative;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-16px); }
-    }
-    .phone-outer {
-      width: 260px; background: #1a1a1a;
-      border-radius: 40px;
-      padding: 12px;
-      box-shadow: 0 40px 80px rgba(0,0,0,.4),
-                  0 0 0 1px rgba(255,255,255,.1);
-      position: relative;
-    }
-    .phone-inner {
-      background: var(--white); border-radius: 30px;
-      overflow: hidden; height: 520px;
-    }
-    .phone-notch {
-      width: 90px; height: 24px;
-      background: #1a1a1a; border-radius: 0 0 16px 16px;
-      margin: 0 auto;
-      position: relative; z-index: 10;
-    }
-    .phone-screen {
-      padding: 0 0 16px;
-      height: calc(520px - 24px);
-      overflow: hidden;
-    }
-    .phone-status {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 6px 20px; font-size: .65rem; font-weight: 600;
-      color: var(--black);
-    }
-    .phone-app-header {
-      padding: 8px 20px 12px;
-      font-size: 1.1rem; font-weight: 800; color: var(--black);
-    }
-    .phone-section-title {
-      padding: 8px 20px 10px;
-      font-size: .75rem; font-weight: 700; color: var(--black);
-      background: #f3f3f3;
-    }
-    .phone-card {
-      margin: 12px 16px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: linear-gradient(145deg, #8b21e0, var(--purple-mid));
-      padding: 16px;
-      color: var(--white);
-    }
-    .phone-card-img {
-      width: 100%; height: 120px;
-      background: linear-gradient(to bottom, rgba(100,40,180,.6), rgba(147,51,234,.9));
-      border-radius: 10px; margin-bottom: 10px;
-      display: flex; align-items: flex-end; padding: 10px;
-      font-size: .7rem; font-weight: 700;
-    }
-    .phone-recs {
-      padding: 0 16px;
-      display: flex; gap: 8px;
-    }
-    .phone-rec-chip {
-      flex: 1; padding: 10px 8px; border-radius: 10px;
-      font-size: .6rem; font-weight: 600; color: var(--white);
-      text-align: center;
-    }
-    .chip-1 { background: #4f46e5; }
-    .chip-2 { background: var(--purple); }
-    .chip-3 { background: #7c3aed; }
-    .phone-nav {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: var(--white); border-top: 1px solid #f0f0f0;
-      display: flex; justify-content: space-around; padding: 8px 0;
-    }
-    .phone-nav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 2px;
-      font-size: .5rem; color: var(--gray); cursor: pointer;
-    }
-    .phone-nav-item.active { color: var(--purple); }
-    .phone-nav-icon { font-size: 1rem; }
-    /* second phone */
-    .phone-wrap-2 {
-      position: absolute; right: -40px; bottom: -20px;
-      width: 200px;
-      animation: float2 3.5s ease-in-out 1s infinite;
-    }
-    @keyframes float2 {
-      0%, 100% { transform: translateY(0) rotate(3deg); }
-      50% { transform: translateY(-12px) rotate(3deg); }
-    }
-    .phone-outer-2 {
-      background: #1a1a1a; border-radius: 30px; padding: 10px;
-      box-shadow: 0 20px 50px rgba(0,0,0,.35);
-    }
-    .phone-inner-2 {
-      background: #111; border-radius: 22px;
-      height: 400px; overflow: hidden;
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 16px; padding: 20px;
-    }
-    .call-avatar {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple), var(--purple-light));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; box-shadow: 0 0 0 8px rgba(147,51,234,.2);
-    }
-    .call-name { color: var(--white); font-weight: 700; font-size: .85rem; }
-    .call-status { color: rgba(255,255,255,.5); font-size: .65rem; }
-    .call-btns { display: flex; gap: 20px; margin-top: 12px; }
-    .call-btn {
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-    }
-    .call-btn.audio { background: rgba(255,255,255,.15); }
-    .call-btn.video { background: rgba(255,255,255,.15); }
-    .call-btn.end { background: #ef4444; }
+      /* phone mockup */
+      .hero-phone {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: relative;
+      }
+      .phone-wrap {
+        position: relative;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-16px);
+        }
+      }
+      .phone-outer {
+        width: 260px;
+        background: #1a1a1a;
+        border-radius: 40px;
+        padding: 12px;
+        box-shadow:
+          0 40px 80px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        position: relative;
+      }
+      .phone-inner {
+        background: var(--white);
+        border-radius: 30px;
+        overflow: hidden;
+        height: 520px;
+      }
+      .phone-notch {
+        width: 90px;
+        height: 24px;
+        background: #1a1a1a;
+        border-radius: 0 0 16px 16px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 10;
+      }
+      .phone-screen {
+        padding: 0 0 16px;
+        height: calc(520px - 24px);
+        overflow: hidden;
+      }
+      .phone-status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 20px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--black);
+      }
+      .phone-app-header {
+        padding: 8px 20px 12px;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--black);
+      }
+      .phone-section-title {
+        padding: 8px 20px 10px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--black);
+        background: #f3f3f3;
+      }
+      .phone-card {
+        margin: 12px 16px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: linear-gradient(145deg, #8b21e0, var(--purple-mid));
+        padding: 16px;
+        color: var(--white);
+      }
+      .phone-card-img {
+        width: 100%;
+        height: 120px;
+        background: linear-gradient(
+          to bottom,
+          rgba(100, 40, 180, 0.6),
+          rgba(147, 51, 234, 0.9)
+        );
+        border-radius: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: flex-end;
+        padding: 10px;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+      .phone-recs {
+        padding: 0 16px;
+        display: flex;
+        gap: 8px;
+      }
+      .phone-rec-chip {
+        flex: 1;
+        padding: 10px 8px;
+        border-radius: 10px;
+        font-size: 0.6rem;
+        font-weight: 600;
+        color: var(--white);
+        text-align: center;
+      }
+      .chip-1 {
+        background: #4f46e5;
+      }
+      .chip-2 {
+        background: var(--purple);
+      }
+      .chip-3 {
+        background: #7c3aed;
+      }
+      .phone-nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-top: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-around;
+        padding: 8px 0;
+      }
+      .phone-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        font-size: 0.5rem;
+        color: var(--gray);
+        cursor: pointer;
+      }
+      .phone-nav-item.active {
+        color: var(--purple);
+      }
+      .phone-nav-icon {
+        font-size: 1rem;
+      }
+      /* second phone */
+      .phone-wrap-2 {
+        position: absolute;
+        right: -40px;
+        bottom: -20px;
+        width: 200px;
+      }
+      @keyframes float2 {
+        0%,
+        100% {
+          transform: translateY(0) rotate(3deg);
+        }
+        50% {
+          transform: translateY(-12px) rotate(3deg);
+        }
+      }
+      .phone-outer-2 {
+        background: #1a1a1a;
+        border-radius: 30px;
+        padding: 10px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      }
+      .phone-inner-2 {
+        background: #111;
+        border-radius: 22px;
+        height: 400px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 20px;
+      }
+      .call-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--purple), var(--purple-light));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 0 0 8px rgba(147, 51, 234, 0.2);
+      }
+      .call-name {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+      .call-status {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.65rem;
+      }
+      .call-btns {
+        display: flex;
+        gap: 20px;
+        margin-top: 12px;
+      }
+      .call-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+      .call-btn.audio {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .call-btn.video {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .call-btn.end {
+        background: #ef4444;
+      }
 
-    /* ─── STATS ─── */
-    .stats {
-      background: var(--lavender);
-      padding: 80px 60px;
-    }
-    .stats-inner {
-      max-width: 1100px; margin: 0 auto;
-      text-align: center;
-    }
-    .section-eyebrow {
-      font-size: .78rem; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--purple);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800; color: var(--black); line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 1rem; color: var(--gray); line-height: 1.7;
-      max-width: 600px; margin: 0 auto 56px;
-    }
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    }
-    .stat-card {
-      background: var(--white); border-radius: 24px;
-      padding: 40px 24px;
-      box-shadow: 0 4px 24px rgba(147,51,234,.08);
-      transition: transform .3s, box-shadow .3s;
-    }
-    .stat-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(147,51,234,.16);
-    }
-    .stat-num {
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 900; color: var(--purple);
-      line-height: 1; margin-bottom: 10px;
-      letter-spacing: -.02em;
-    }
-    .stat-label { font-size: .95rem; color: var(--black); font-weight: 600; line-height: 1.4; }
-    .stat-sub { font-size: .82rem; color: var(--gray); margin-top: 6px; line-height: 1.5; }
+      /* ─── STATS ─── */
+      .stats {
+        background: var(--lavender);
+        padding: 80px 60px;
+      }
+      .stats-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .section-eyebrow {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: var(--black);
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+      .section-desc {
+        font-size: 1rem;
+        color: var(--gray);
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto 56px;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .stat-card {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 40px 24px;
+        box-shadow: 0 4px 24px rgba(147, 51, 234, 0.08);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .stat-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 48px rgba(147, 51, 234, 0.16);
+      }
+      .stat-num {
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        font-weight: 900;
+        color: var(--purple);
+        line-height: 1;
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+      }
+      .stat-label {
+        font-size: 0.95rem;
+        color: var(--black);
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .stat-sub {
+        font-size: 0.82rem;
+        color: var(--gray);
+        margin-top: 6px;
+        line-height: 1.5;
+      }
 
-    /* ─── ABOUT ─── */
-    .about {
-      padding: 100px 60px;
-      background: var(--white);
-    }
-    .about-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-      align-items: center;
-    }
-    .about-text .section-eyebrow,
-    .about-text .section-title { text-align: left; }
-    .about-text .section-title { margin-bottom: 20px; }
-    .about-text p {
-      font-size: 1rem; color: var(--gray); line-height: 1.8; margin-bottom: 16px;
-    }
-    .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-    .about-tag {
-      background: var(--lavender); color: var(--purple);
-      padding: 8px 18px; border-radius: 999px;
-      font-size: .82rem; font-weight: 600; letter-spacing: .02em;
-    }
-    .about-cards {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-    }
-    .about-card {
-      background: var(--lavender); border-radius: 20px; padding: 24px;
-      transition: transform .3s;
-    }
-    .about-card:hover { transform: translateY(-4px); }
-    .about-card-icon { font-size: 1.8rem; margin-bottom: 12px; }
-    .about-card h4 { font-size: .92rem; font-weight: 700; color: var(--black); margin-bottom: 6px; }
-    .about-card p { font-size: .8rem; color: var(--gray); line-height: 1.6; }
+      /* ─── ABOUT ─── */
+      .about {
+        padding: 100px 60px;
+        background: var(--white);
+      }
+      .about-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .about-text .section-eyebrow,
+      .about-text .section-title {
+        text-align: left;
+      }
+      .about-text .section-title {
+        margin-bottom: 20px;
+      }
+      .about-text p {
+        font-size: 1rem;
+        color: var(--gray);
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+      .about-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+      .about-tag {
+        background: var(--lavender);
+        color: var(--purple);
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .about-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .about-card {
+        background: var(--lavender);
+        border-radius: 20px;
+        padding: 24px;
+        transition: transform 0.3s;
+      }
+      .about-card:hover {
+        transform: translateY(-4px);
+      }
+      .about-card-icon {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+      }
+      .about-card h4 {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 6px;
+      }
+      .about-card p {
+        font-size: 0.8rem;
+        color: var(--gray);
+        line-height: 1.6;
+      }
 
-    /* ─── FEATURES ─── */
-    .features {
-      background: var(--lavender);
-      padding: 100px 60px;
-    }
-    .features-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .features-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-      margin-top: 60px;
-    }
-    .feature-card {
-      background: var(--white); border-radius: 24px; padding: 36px 28px;
-      text-align: left;
-      transition: transform .3s, box-shadow .3s;
-      cursor: default;
-      position: relative; overflow: hidden;
-    }
-    .feature-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--purple), var(--purple-light));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .3s;
-    }
-    .feature-card:hover::before { transform: scaleX(1); }
-    .feature-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(147,51,234,.14);
-    }
-    .feature-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--lavender); display: flex; align-items: center;
-      justify-content: center; font-size: 1.4rem; margin-bottom: 20px;
-    }
-    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
-    .feature-card p { font-size: .88rem; color: var(--gray); line-height: 1.7; }
-    .feature-list {
-      margin-top: 14px; padding-left: 0; list-style: none;
-    }
-    .feature-list li {
-      font-size: .82rem; color: var(--gray); padding: 4px 0;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .feature-list li::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--purple); flex-shrink: 0;
-    }
-    /* special large card */
-    .feature-card.large {
-      grid-column: span 2;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-      align-items: center;
-    }
-    .feature-ai-visual {
-      background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid));
-      border-radius: 16px; padding: 24px;
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-    }
-    .ai-bubble {
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.25);
-      color: var(--white); font-size: .72rem; font-weight: 500;
-      padding: 7px 14px; border-radius: 999px; backdrop-filter: blur(4px);
-    }
+      /* ─── FEATURES ─── */
+      .features {
+        background: var(--lavender);
+        padding: 100px 60px;
+      }
+      .features-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 60px;
+      }
+      .feature-card {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 36px 28px;
+        text-align: left;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--purple), var(--purple-light));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+      .feature-card:hover::before {
+        transform: scaleX(1);
+      }
+      .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 60px rgba(147, 51, 234, 0.14);
+      }
+      .feature-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: var(--lavender);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+      }
+      .feature-card h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .feature-card p {
+        font-size: 0.88rem;
+        color: var(--gray);
+        line-height: 1.7;
+      }
+      .feature-list {
+        margin-top: 14px;
+        padding-left: 0;
+        list-style: none;
+      }
+      .feature-list li {
+        font-size: 0.82rem;
+        color: var(--gray);
+        padding: 4px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .feature-list li::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--purple);
+        flex-shrink: 0;
+      }
+      /* special large card */
+      .feature-card.large {
+        grid-column: span 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        align-items: center;
+      }
+      .feature-ai-visual {
+        background: linear-gradient(
+          135deg,
+          var(--purple-dark),
+          var(--purple-mid)
+        );
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+      .ai-bubble {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: var(--white);
+        font-size: 0.72rem;
+        font-weight: 500;
+        padding: 7px 14px;
+        border-radius: 999px;
+        backdrop-filter: blur(4px);
+      }
 
-    /* ─── JOURNEY ─── */
-    .journey {
-      background: var(--white);
-      padding: 100px 60px;
-    }
-    .journey-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .journey-map {
-      margin-top: 60px; background: var(--lavender);
-      border-radius: 28px; padding: 40px;
-      position: relative;
-    }
-    .journey-persona {
-      display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap;
-    }
-    .persona-chip {
-      background: var(--purple); color: var(--white);
-      padding: 8px 18px; border-radius: 999px;
-      font-size: .82rem; font-weight: 600;
-    }
-    .persona-problem {
-      background: var(--white); padding: 12px 20px; border-radius: 12px;
-      font-size: .85rem; color: var(--black); text-align: left; flex: 1;
-    }
-    .journey-timeline {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
-      position: relative;
-    }
-    .journey-timeline::before {
-      content: ''; position: absolute; top: 32px; left: 10%; right: 10%;
-      height: 2px; background: var(--purple-light);
-    }
-    .journey-step { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 8px; }
-    .journey-dot {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: var(--white); border: 3px solid var(--purple-light);
-      position: relative; z-index: 2; flex-shrink: 0;
-      transition: transform .3s;
-    }
-    .journey-dot.highlight {
-      background: var(--purple); border-color: var(--purple);
-      width: 28px; height: 28px;
-      box-shadow: 0 0 0 6px rgba(147,51,234,.2);
-    }
-    .journey-stage {
-      font-size: .72rem; font-weight: 600; color: var(--black);
-      text-align: center; padding: 6px 10px;
-      background: var(--white); border-radius: 8px;
-    }
-    .journey-cards {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
-      margin-top: 16px;
-    }
-    .j-card {
-      background: var(--white); border-radius: 12px; padding: 12px;
-      font-size: .7rem; color: var(--gray); line-height: 1.5;
-      text-align: left;
-    }
-    .j-card.highlight {
-      background: var(--purple); color: var(--white); font-weight: 600;
-    }
+      /* ─── JOURNEY ─── */
+      .journey {
+        background: var(--white);
+        padding: 100px 60px;
+      }
+      .journey-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .journey-map {
+        margin-top: 60px;
+        background: var(--lavender);
+        border-radius: 28px;
+        padding: 40px;
+        position: relative;
+      }
+      .journey-persona {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+      .persona-chip {
+        background: var(--purple);
+        color: var(--white);
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+      .persona-problem {
+        background: var(--white);
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        color: var(--black);
+        text-align: left;
+        flex: 1;
+      }
+      .journey-timeline {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+        position: relative;
+      }
+      .journey-timeline::before {
+        content: "";
+        position: absolute;
+        top: 32px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background: var(--purple-light);
+      }
+      .journey-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0 8px;
+      }
+      .journey-dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--white);
+        border: 3px solid var(--purple-light);
+        position: relative;
+        z-index: 2;
+        flex-shrink: 0;
+        transition: transform 0.3s;
+      }
+      .journey-dot.highlight {
+        background: var(--purple);
+        border-color: var(--purple);
+        width: 28px;
+        height: 28px;
+        box-shadow: 0 0 0 6px rgba(147, 51, 234, 0.2);
+      }
+      .journey-stage {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--black);
+        text-align: center;
+        padding: 6px 10px;
+        background: var(--white);
+        border-radius: 8px;
+      }
+      .journey-cards {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .j-card {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 0.7rem;
+        color: var(--gray);
+        line-height: 1.5;
+        text-align: left;
+      }
+      .j-card.highlight {
+        background: var(--purple);
+        color: var(--white);
+        font-weight: 600;
+      }
 
-    /* ─── PRICING ─── */
-    .pricing {
-      background: var(--lavender);
-      padding: 100px 60px;
-    }
-    .pricing-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-      margin-top: 60px;
-    }
-    .pricing-card {
-      background: var(--white); border-radius: 28px; padding: 40px 32px;
-      text-align: left; position: relative; overflow: hidden;
-      transition: transform .3s, box-shadow .3s;
-    }
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 64px rgba(147,51,234,.18);
-    }
-    .pricing-card.popular {
-      background: linear-gradient(160deg, var(--purple-dark) 0%, var(--purple-mid) 100%);
-      color: var(--white);
-    }
-    .popular-badge {
-      position: absolute; top: 20px; right: 20px;
-      background: rgba(255,255,255,.2);
-      color: var(--white); font-size: .7rem; font-weight: 700;
-      padding: 4px 12px; border-radius: 999px;
-      letter-spacing: .08em; text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,.3);
-    }
-    .plan-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
-    .pricing-card.popular .plan-name { color: var(--white); }
-    .plan-price-wrap { margin: 20px 0; }
-    .plan-price {
-      font-size: 2.4rem; font-weight: 900; letter-spacing: -.03em; color: var(--black);
-    }
-    .pricing-card.popular .plan-price { color: var(--white); }
-    .plan-period { font-size: .85rem; color: var(--gray); font-weight: 400; }
-    .pricing-card.popular .plan-period { color: rgba(255,255,255,.7); }
-    .plan-annual { font-size: .78rem; color: var(--gray); margin-top: 4px; }
-    .pricing-card.popular .plan-annual { color: rgba(255,255,255,.6); }
-    .plan-divider {
-      height: 1px; background: var(--lavender-2);
-      margin: 20px 0;
-    }
-    .pricing-card.popular .plan-divider { background: rgba(255,255,255,.2); }
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .plan-features li {
-      display: flex; align-items: center; gap: 10px;
-      font-size: .88rem; color: var(--gray);
-    }
-    .pricing-card.popular .plan-features li { color: rgba(255,255,255,.85); }
-    .plan-features li .check { color: var(--purple); font-size: 1rem; flex-shrink: 0; }
-    .pricing-card.popular .plan-features li .check { color: rgba(255,255,255,.9); }
-    .plan-btn {
-      width: 100%; margin-top: 32px; padding: 14px;
-      border-radius: 14px; border: none; cursor: pointer;
-      font-size: .9rem; font-weight: 700; letter-spacing: .02em;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .plan-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(147,51,234,.3);
-    }
-    .plan-btn-outline {
-      background: transparent; color: var(--purple);
-      border: 2px solid var(--purple-light);
-    }
-    .plan-btn-outline:hover { background: var(--lavender); }
-    .plan-btn-solid {
-      background: var(--white); color: var(--purple);
-    }
+      /* ─── PRICING ─── */
+      .pricing {
+        background: var(--lavender);
+        padding: 100px 60px;
+      }
+      .pricing-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 60px;
+      }
+      .pricing-card {
+        background: var(--white);
+        border-radius: 28px;
+        padding: 40px 32px;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 64px rgba(147, 51, 234, 0.18);
+      }
+      .pricing-card.popular {
+        background: linear-gradient(
+          160deg,
+          var(--purple-dark) 0%,
+          var(--purple-mid) 100%
+        );
+        color: var(--white);
+      }
+      .popular-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 999px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .plan-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .pricing-card.popular .plan-name {
+        color: var(--white);
+      }
+      .plan-price-wrap {
+        margin: 20px 0;
+      }
+      .plan-price {
+        font-size: 2.4rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        color: var(--black);
+      }
+      .pricing-card.popular .plan-price {
+        color: var(--white);
+      }
+      .plan-period {
+        font-size: 0.85rem;
+        color: var(--gray);
+        font-weight: 400;
+      }
+      .pricing-card.popular .plan-period {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .plan-annual {
+        font-size: 0.78rem;
+        color: var(--gray);
+        margin-top: 4px;
+      }
+      .pricing-card.popular .plan-annual {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .plan-divider {
+        height: 1px;
+        background: var(--lavender-2);
+        margin: 20px 0;
+      }
+      .pricing-card.popular .plan-divider {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .plan-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .plan-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.88rem;
+        color: var(--gray);
+      }
+      .pricing-card.popular .plan-features li {
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .plan-features li .check {
+        color: var(--purple);
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+      .pricing-card.popular .plan-features li .check {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .plan-btn {
+        width: 100%;
+        margin-top: 32px;
+        padding: 14px;
+        border-radius: 14px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .plan-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(147, 51, 234, 0.3);
+      }
+      .plan-btn-outline {
+        background: transparent;
+        color: var(--purple);
+        border: 2px solid var(--purple-light);
+      }
+      .plan-btn-outline:hover {
+        background: var(--lavender);
+      }
+      .plan-btn-solid {
+        background: var(--white);
+        color: var(--purple);
+      }
 
-    /* ─── CTA BAND ─── */
-    .cta-band {
-      background: linear-gradient(135deg, #8b21e0 0%, #9333ea 50%, #a855f7 100%);
-      padding: 80px 60px;
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-band::before {
-      content: ''; position: absolute;
-      width: 500px; height: 500px; border-radius: 50%;
-      background: rgba(255,255,255,.05);
-      top: -200px; right: -100px;
-    }
-    .cta-band h2 {
-      font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
-      color: var(--white); margin-bottom: 14px; position: relative;
-    }
-    .cta-band p {
-      color: rgba(255,255,255,.75); font-size: 1rem; line-height: 1.7;
-      max-width: 500px; margin: 0 auto 40px; position: relative;
-    }
-    .cta-store-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
-    .cta-store-btn {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--white); color: var(--black);
-      padding: 13px 24px; border-radius: 14px;
-      font-weight: 700; font-size: .88rem;
-      text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .cta-store-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.25);
-    }
-    .cta-store-btn .icon { font-size: 1.6rem; }
-    .cta-store-btn .text { text-align: left; line-height: 1.3; }
-    .cta-store-btn .sub { font-size: .68rem; color: var(--gray); font-weight: 400; }
-    .cta-store-btn .name { font-size: .95rem; font-weight: 800; }
+      /* ─── CTA BAND ─── */
+      .cta-band {
+        background: linear-gradient(
+          135deg,
+          #8b21e0 0%,
+          #9333ea 50%,
+          #a855f7 100%
+        );
+        padding: 80px 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-band::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        top: -200px;
+        right: -100px;
+      }
+      .cta-band h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 900;
+        color: var(--white);
+        margin-bottom: 14px;
+        position: relative;
+      }
+      .cta-band p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 1rem;
+        line-height: 1.7;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        position: relative;
+      }
+      .cta-store-btns {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+      }
+      .cta-store-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--white);
+        color: var(--black);
+        padding: 13px 24px;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 0.88rem;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .cta-store-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      }
+      .cta-store-btn .icon {
+        font-size: 1.6rem;
+      }
+      .cta-store-btn .text {
+        text-align: left;
+        line-height: 1.3;
+      }
+      .cta-store-btn .sub {
+        font-size: 0.68rem;
+        color: var(--gray);
+        font-weight: 400;
+      }
+      .cta-store-btn .name {
+        font-size: 0.95rem;
+        font-weight: 800;
+      }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: #0a0a0a;
-      padding: 60px 60px 36px;
-      color: rgba(255,255,255,.6);
-    }
-    .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 60px; margin-bottom: 48px;
-    }
-    .footer-brand p {
-      font-size: .88rem; line-height: 1.7;
-      color: rgba(255,255,255,.45); max-width: 280px;
-      margin-top: 16px;
-    }
-    .footer-col h5 {
-      font-size: .8rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: rgba(255,255,255,.4);
-      margin-bottom: 16px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul a {
-      text-decoration: none; color: rgba(255,255,255,.6);
-      font-size: .88rem;
-      transition: color .2s;
-    }
-    .footer-col ul a:hover { color: var(--purple-light); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 28px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 12px;
-    }
-    .footer-bottom p { font-size: .8rem; color: rgba(255,255,255,.3); }
-    .footer-social { display: flex; gap: 14px; }
-    .social-btn {
-      width: 34px; height: 34px; border-radius: 8px;
-      background: rgba(255,255,255,.07);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .85rem; text-decoration: none; color: rgba(255,255,255,.5);
-      transition: background .2s, color .2s;
-    }
-    .social-btn:hover { background: var(--purple); color: var(--white); }
+      /* ─── FOOTER ─── */
+      footer {
+        background: #0a0a0a;
+        padding: 60px 60px 36px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 48px;
+      }
+      .footer-brand p {
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.45);
+        max-width: 280px;
+        margin-top: 16px;
+      }
+      .footer-col h5 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 16px;
+      }
+      .footer-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-col ul a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.88rem;
+        transition: color 0.2s;
+      }
+      .footer-col ul a:hover {
+        color: var(--purple-light);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .footer-bottom p {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .footer-social {
+        display: flex;
+        gap: 14px;
+      }
+      .social-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.07);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.5);
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .social-btn:hover {
+        background: var(--purple);
+        color: var(--white);
+      }
 
-    /* ─── ANIMATIONS ─── */
-    .fade-in {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1; transform: translateY(0);
-    }
-    .fade-in-delay-1 { transition-delay: .1s; }
-    .fade-in-delay-2 { transition-delay: .2s; }
-    .fade-in-delay-3 { transition-delay: .3s; }
-    .fade-in-delay-4 { transition-delay: .4s; }
-    .fade-in-delay-5 { transition-delay: .5s; }
+      /* ─── ANIMATIONS ─── */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .fade-in-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .fade-in-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .fade-in-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .fade-in-delay-4 {
+        transition-delay: 0.4s;
+      }
+      .fade-in-delay-5 {
+        transition-delay: 0.5s;
+      }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 1024px) {
-      nav { padding: 16px 32px; }
-      nav.scrolled { padding: 12px 32px; }
-      .hero { padding: 100px 32px 60px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-      .hero-logo-wrap svg { width: 240px; }
-      .hero-desc { max-width: 100%; }
-      .hero-btns { justify-content: center; }
-      .hero-phone { justify-content: center; }
-      .phone-wrap-2 { display: none; }
-      .about { padding: 70px 32px; }
-      .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .stats, .features, .journey, .pricing, .cta-band { padding: 70px 32px; }
-      .stats-grid { grid-template-columns: 1fr; gap: 16px; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .feature-card.large { grid-column: span 2; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 60px auto 0; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-    }
-    @media (max-width: 640px) {
-      nav { padding: 14px 20px; }
-      nav.scrolled { padding: 10px 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 90px 20px 50px; }
-      .hero-logo-wrap svg { width: 180px; }
-      .stats, .features, .journey, .pricing, .cta-band { padding: 60px 20px; }
-      .about { padding: 60px 20px; }
-      .features-grid { grid-template-columns: 1fr; }
-      .feature-card.large { grid-column: span 1; display: block; }
-      .journey-timeline { grid-template-columns: 1fr 1fr; }
-      .journey-timeline::before { display: none; }
-      .journey-cards { grid-template-columns: 1fr 1fr; }
-      .footer-top { grid-template-columns: 1fr; gap: 24px; }
-      footer { padding: 48px 20px 28px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- ─── NAVIGATION ─── -->
-<nav id="navbar">
-  <a class="nav-logo" href="#">
-    <!-- HAPY SVG Logo (geometric) -->
-    <svg viewBox="0 0 130 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- H (double bar style) -->
-      <rect x="0"  y="4" width="8"  height="44" rx="1" fill="white"/>
-      <rect x="13" y="4" width="8"  height="44" rx="1" fill="white"/>
-      <rect x="0"  y="22" width="21" height="8"  rx="1" fill="white"/>
-      <!-- A -->
-      <path d="M32 48 L44 4 L56 48" stroke="white" stroke-width="8" stroke-linejoin="round" fill="none" stroke-linecap="round"/>
-      <line x1="35" y1="32" x2="53" y2="32" stroke="white" stroke-width="7" stroke-linecap="round"/>
-      <!-- P -->
-      <rect x="66" y="4" width="8" height="44" rx="1" fill="white"/>
-      <path d="M74 4 Q96 4 96 18 Q96 32 74 32" stroke="white" stroke-width="8" stroke-linejoin="round" fill="none"/>
-      <!-- Y -->
-      <line x1="108" y1="4"  x2="120" y2="22" stroke="white" stroke-width="8" stroke-linecap="round"/>
-      <line x1="130" y1="4"  x2="120" y2="22" stroke="white" stroke-width="8" stroke-linecap="round"/>
-      <line x1="120" y1="22" x2="120" y2="48" stroke="white" stroke-width="8" stroke-linecap="round"/>
-    </svg>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#ai">HAPY AI</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-  </ul>
-  <button class="nav-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
-    Get Started
-  </button>
-</nav>
-
-<!-- ─── HERO ─── -->
-<section class="hero" id="home">
-  <div class="hero-bg-circle c1"></div>
-  <div class="hero-bg-circle c2"></div>
-  <div class="hero-bg-circle c3"></div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-label">Global Start-Up Design Thinking Hackathon</div>
-      <div class="hero-logo-wrap">
-        <svg viewBox="0 0 320 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0"   y="6" width="18"  height="78" rx="2" fill="white"/>
-          <rect x="28"  y="6" width="18"  height="78" rx="2" fill="white"/>
-          <rect x="0"   y="38" width="46" height="14"  rx="2" fill="white"/>
-          <path d="M62 84 L88 6 L114 84" stroke="white" stroke-width="16" stroke-linejoin="round" fill="none" stroke-linecap="round"/>
-          <line x1="68" y1="56" x2="108" y2="56" stroke="white" stroke-width="14" stroke-linecap="round"/>
-          <rect x="130" y="6" width="16" height="78" rx="2" fill="white"/>
-          <path d="M146 6 Q188 6 188 34 Q188 62 146 62" stroke="white" stroke-width="16" stroke-linejoin="round" fill="none"/>
-          <line x1="212" y1="6"  x2="240" y2="40" stroke="white" stroke-width="16" stroke-linecap="round"/>
-          <line x1="268" y1="6"  x2="240" y2="40" stroke="white" stroke-width="16" stroke-linecap="round"/>
-          <line x1="240" y1="40" x2="240" y2="84" stroke="white" stroke-width="16" stroke-linecap="round"/>
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 1024px) {
+        nav {
+          padding: 16px 32px;
+        }
+        nav.scrolled {
+          padding: 12px 32px;
+        }
+        .hero {
+          padding: 100px 32px 60px;
+        }
+        .hero-inner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          text-align: center;
+        }
+        .hero-logo-wrap svg {
+          width: 240px;
+        }
+        .hero-desc {
+          max-width: 100%;
+        }
+        .hero-btns {
+          justify-content: center;
+        }
+        .hero-phone {
+          justify-content: center;
+        }
+        .phone-wrap-2 {
+          display: none;
+        }
+        .about {
+          padding: 70px 32px;
+        }
+        .about-inner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .stats,
+        .features,
+        .journey,
+        .pricing,
+        .cta-band {
+          padding: 70px 32px;
+        }
+        .stats-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .features-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .feature-card.large {
+          grid-column: span 2;
+        }
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          max-width: 440px;
+          margin: 60px auto 0;
+        }
+        .footer-top {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+        }
+      }
+      @media (max-width: 640px) {
+        nav {
+          padding: 14px 20px;
+        }
+        nav.scrolled {
+          padding: 10px 20px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hero {
+          padding: 90px 20px 50px;
+        }
+        .hero-logo-wrap svg {
+          width: 180px;
+        }
+        .stats,
+        .features,
+        .journey,
+        .pricing,
+        .cta-band {
+          padding: 60px 20px;
+        }
+        .about {
+          padding: 60px 20px;
+        }
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+        .feature-card.large {
+          grid-column: span 1;
+          display: block;
+        }
+        .journey-timeline {
+          grid-template-columns: 1fr 1fr;
+        }
+        .journey-timeline::before {
+          display: none;
+        }
+        .journey-cards {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-top {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        footer {
+          padding: 48px 20px 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ─── NAVIGATION ─── -->
+    <nav id="navbar">
+      <a class="nav-logo" href="#">
+        <!-- HAPY SVG Logo (geometric) -->
+        <svg
+          viewBox="0 0 130 52"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- H (double bar style) -->
+          <rect x="0" y="4" width="8" height="44" rx="1" fill="white" />
+          <rect x="13" y="4" width="8" height="44" rx="1" fill="white" />
+          <rect x="0" y="22" width="21" height="8" rx="1" fill="white" />
+          <!-- A -->
+          <path
+            d="M32 48 L44 4 L56 48"
+            stroke="white"
+            stroke-width="8"
+            stroke-linejoin="round"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <line
+            x1="35"
+            y1="32"
+            x2="53"
+            y2="32"
+            stroke="white"
+            stroke-width="7"
+            stroke-linecap="round"
+          />
+          <!-- P -->
+          <rect x="66" y="4" width="8" height="44" rx="1" fill="white" />
+          <path
+            d="M74 4 Q96 4 96 18 Q96 32 74 32"
+            stroke="white"
+            stroke-width="8"
+            stroke-linejoin="round"
+            fill="none"
+          />
+          <!-- Y -->
+          <line
+            x1="108"
+            y1="4"
+            x2="120"
+            y2="22"
+            stroke="white"
+            stroke-width="8"
+            stroke-linecap="round"
+          />
+          <line
+            x1="130"
+            y1="4"
+            x2="120"
+            y2="22"
+            stroke="white"
+            stroke-width="8"
+            stroke-linecap="round"
+          />
+          <line
+            x1="120"
+            y1="22"
+            x2="120"
+            y2="48"
+            stroke="white"
+            stroke-width="8"
+            stroke-linecap="round"
+          />
         </svg>
-      </div>
-      <p class="hero-tagline">Be Happy, With Hapy</p>
-      <p class="hero-desc">
-        A digital mental health companion that helps you escape depression and find happiness — through AI chat, community support, and personalized care.
-      </p>
-      <div class="hero-btns">
-        <a class="btn-store" href="#">
-          <span class="store-icon">🍎</span>
-          <span class="store-text">
-            <span class="store-sub">Download on the</span>
-            <span class="store-name">App Store</span>
-          </span>
-        </a>
-        <a class="btn-store" href="#">
-          <span class="store-icon">▶</span>
-          <span class="store-text">
-            <span class="store-sub">Get it on</span>
-            <span class="store-name">Google Play</span>
-          </span>
-        </a>
-      </div>
-    </div>
-    <div class="hero-phone">
-      <div class="phone-wrap">
-        <div class="phone-outer">
-          <div class="phone-inner">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="phone-status">
-                <span>9:41</span>
-                <span>●●●● ▲ ▪</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#ai">HAPY AI</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <button
+        class="nav-cta"
+        onclick="
+          document
+            .getElementById('pricing')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
+        Get Started
+      </button>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero" id="home">
+      <div class="hero-bg-circle c1"></div>
+      <div class="hero-bg-circle c2"></div>
+      <div class="hero-bg-circle c3"></div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-label">
+            Global Start-Up Design Thinking Hackathon
+          </div>
+          <div class="hero-logo-wrap">
+            <svg
+              viewBox="0 0 320 90"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="0" y="6" width="18" height="78" rx="2" fill="white" />
+              <rect x="28" y="6" width="18" height="78" rx="2" fill="white" />
+              <rect x="0" y="38" width="46" height="14" rx="2" fill="white" />
+              <path
+                d="M62 84 L88 6 L114 84"
+                stroke="white"
+                stroke-width="16"
+                stroke-linejoin="round"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <line
+                x1="68"
+                y1="56"
+                x2="108"
+                y2="56"
+                stroke="white"
+                stroke-width="14"
+                stroke-linecap="round"
+              />
+              <rect x="130" y="6" width="16" height="78" rx="2" fill="white" />
+              <path
+                d="M146 6 Q188 6 188 34 Q188 62 146 62"
+                stroke="white"
+                stroke-width="16"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <line
+                x1="212"
+                y1="6"
+                x2="240"
+                y2="40"
+                stroke="white"
+                stroke-width="16"
+                stroke-linecap="round"
+              />
+              <line
+                x1="268"
+                y1="6"
+                x2="240"
+                y2="40"
+                stroke="white"
+                stroke-width="16"
+                stroke-linecap="round"
+              />
+              <line
+                x1="240"
+                y1="40"
+                x2="240"
+                y2="84"
+                stroke="white"
+                stroke-width="16"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <p class="hero-tagline">Be Happy, With Hapy</p>
+          <p class="hero-desc">
+            A digital mental health companion that helps you escape depression
+            and find happiness — through AI chat, community support, and
+            personalized care.
+          </p>
+          <div class="hero-btns">
+            <a class="btn-store" href="#">
+              <span class="store-icon">🍎</span>
+              <span class="store-text">
+                <span class="store-sub">Download on the</span>
+                <span class="store-name">App Store</span>
+              </span>
+            </a>
+            <a class="btn-store" href="#">
+              <span class="store-icon">▶</span>
+              <span class="store-text">
+                <span class="store-sub">Get it on</span>
+                <span class="store-name">Google Play</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-phone">
+          <div class="phone-wrap">
+            <div class="phone-outer">
+              <div class="phone-inner">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                  <div class="phone-status">
+                    <span>9:41</span>
+                    <span>●●●● ▲ ▪</span>
+                  </div>
+                  <div class="phone-app-header">HAPY</div>
+                  <div class="phone-section-title">What's New</div>
+                  <div class="phone-card">
+                    <div class="phone-card-img">HAPY Update 2.01 ver.</div>
+                  </div>
+                  <div
+                    style="
+                      padding: 8px 16px 6px;
+                      font-size: 0.72rem;
+                      font-weight: 700;
+                      color: #111;
+                    "
+                  >
+                    Recommend for you
+                  </div>
+                  <div class="phone-recs">
+                    <div
+                      class="phone-rec-chip chip-1"
+                      style="font-size: 0.56rem"
+                    >
+                      Depression and Exercise
+                    </div>
+                    <div
+                      class="phone-rec-chip chip-2"
+                      style="font-size: 0.56rem"
+                    >
+                      Challenge day Event
+                    </div>
+                    <div
+                      class="phone-rec-chip chip-3"
+                      style="font-size: 0.56rem"
+                    >
+                      Overcoming Depression
+                    </div>
+                  </div>
+                  <div class="phone-nav">
+                    <div class="phone-nav-item active">
+                      <span class="phone-nav-icon">🏠</span>
+                      <span>Home</span>
+                    </div>
+                    <div class="phone-nav-item">
+                      <span class="phone-nav-icon">💬</span>
+                      <span>Community</span>
+                    </div>
+                    <div class="phone-nav-item">
+                      <span class="phone-nav-icon">🤖</span>
+                      <span>HAPY</span>
+                    </div>
+                    <div class="phone-nav-item">
+                      <span class="phone-nav-icon">📖</span>
+                      <span>Magazine</span>
+                    </div>
+                    <div class="phone-nav-item">
+                      <span class="phone-nav-icon">👤</span>
+                      <span>Profile</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="phone-app-header">HAPY</div>
-              <div class="phone-section-title">What's New</div>
-              <div class="phone-card">
-                <div class="phone-card-img">HAPY Update 2.01 ver.</div>
-              </div>
-              <div style="padding: 8px 16px 6px; font-size: .72rem; font-weight: 700; color: #111;">Recommend for you</div>
-              <div class="phone-recs">
-                <div class="phone-rec-chip chip-1" style="font-size:.56rem;">Depression and Exercise</div>
-                <div class="phone-rec-chip chip-2" style="font-size:.56rem;">Challenge day Event</div>
-                <div class="phone-rec-chip chip-3" style="font-size:.56rem;">Overcoming Depression</div>
-              </div>
-              <div class="phone-nav">
-                <div class="phone-nav-item active">
-                  <span class="phone-nav-icon">🏠</span>
-                  <span>Home</span>
-                </div>
-                <div class="phone-nav-item">
-                  <span class="phone-nav-icon">💬</span>
-                  <span>Community</span>
-                </div>
-                <div class="phone-nav-item">
-                  <span class="phone-nav-icon">🤖</span>
-                  <span>HAPY</span>
-                </div>
-                <div class="phone-nav-item">
-                  <span class="phone-nav-icon">📖</span>
-                  <span>Magazine</span>
-                </div>
-                <div class="phone-nav-item">
-                  <span class="phone-nav-icon">👤</span>
-                  <span>Profile</span>
+            </div>
+          </div>
+          <div class="phone-wrap-2">
+            <div class="phone-outer-2">
+              <div class="phone-inner-2">
+                <div class="call-avatar">🤖</div>
+                <div class="call-name">HAPY</div>
+                <div class="call-status">Connected · 2:34</div>
+                <div class="call-btns">
+                  <div class="call-btn audio">🔊</div>
+                  <div class="call-btn video">📹</div>
+                  <div class="call-btn end">📞</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="phone-wrap-2">
-        <div class="phone-outer-2">
-          <div class="phone-inner-2">
-            <div class="call-avatar">🤖</div>
-            <div class="call-name">HAPY</div>
-            <div class="call-status">Connected · 2:34</div>
-            <div class="call-btns">
-              <div class="call-btn audio">🔊</div>
-              <div class="call-btn video">📹</div>
-              <div class="call-btn end">📞</div>
+    </section>
+
+    <!-- ─── STATS ─── -->
+    <section class="stats" id="stats">
+      <div class="stats-inner">
+        <div class="section-eyebrow fade-in">The Problem</div>
+        <h2 class="section-title fade-in fade-in-delay-1">
+          Depression is a global crisis
+        </h2>
+        <p class="section-desc fade-in fade-in-delay-2">
+          Millions of people suffer in silence. Less than half ever receive the
+          help they need. HAPY is here to change that.
+        </p>
+        <div class="stats-grid">
+          <div class="stat-card fade-in fade-in-delay-1">
+            <div class="stat-num" data-target="280000000">0</div>
+            <div class="stat-label">People Suffer from Depression</div>
+            <div class="stat-sub">
+              5% of the entire world population is affected by depression today.
+            </div>
+          </div>
+          <div class="stat-card fade-in fade-in-delay-2">
+            <div class="stat-num">1 / 20</div>
+            <div class="stat-label">
+              Koreans Suffer a Depression Episode in Their Lifetime
+            </div>
+            <div class="stat-sub">
+              The prevalence is even higher in fast-paced societies like Korea.
+            </div>
+          </div>
+          <div class="stat-card fade-in fade-in-delay-3">
+            <div class="stat-num">&lt;50%</div>
+            <div class="stat-label">Actually Receive Help</div>
+            <div class="stat-sub">
+              Less than half of those who need treatment ever seek or receive
+              it.
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ─── STATS ─── -->
-<section class="stats" id="stats">
-  <div class="stats-inner">
-    <div class="section-eyebrow fade-in">The Problem</div>
-    <h2 class="section-title fade-in fade-in-delay-1">Depression is a global crisis</h2>
-    <p class="section-desc fade-in fade-in-delay-2">
-      Millions of people suffer in silence. Less than half ever receive the help they need.
-      HAPY is here to change that.
-    </p>
-    <div class="stats-grid">
-      <div class="stat-card fade-in fade-in-delay-1">
-        <div class="stat-num" data-target="280000000">0</div>
-        <div class="stat-label">People Suffer from Depression</div>
-        <div class="stat-sub">5% of the entire world population is affected by depression today.</div>
+    <!-- ─── ABOUT ─── -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-text">
+          <div class="section-eyebrow fade-in">About HAPY</div>
+          <h2 class="section-title fade-in fade-in-delay-1">
+            Designed to heal,<br />built to care
+          </h2>
+          <p class="fade-in fade-in-delay-2">
+            HAPY is a digital mental health platform that combines AI-powered
+            conversation, community support, and expert content — all in one
+            intuitive app.
+          </p>
+          <p class="fade-in fade-in-delay-3">
+            Traditional therapy costs $130+ per session. HAPY delivers
+            continuous, personalized support for just $12 a month — making
+            mental health care accessible to everyone.
+          </p>
+          <div class="about-tags fade-in fade-in-delay-4">
+            <span class="about-tag">Purple Tone & Mood</span>
+            <span class="about-tag">Geometric Design</span>
+            <span class="about-tag">Simple & Modern</span>
+            <span class="about-tag">Responsive</span>
+          </div>
+        </div>
+        <div class="about-cards fade-in fade-in-delay-2">
+          <div class="about-card">
+            <div class="about-card-icon">💜</div>
+            <h4>Mental Health First</h4>
+            <p>
+              Every feature is designed with evidence-based mental health
+              principles.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🤖</div>
+            <h4>Generative AI</h4>
+            <p>
+              HAPY AI learns your patterns and provides personalized, empathetic
+              responses.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🌐</div>
+            <h4>Community Driven</h4>
+            <p>
+              Connect with others, share challenges, and build a healthier
+              support system.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🔒</div>
+            <h4>Private & Secure</h4>
+            <p>
+              Your data is protected with strict privacy policies and user
+              consent.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="stat-card fade-in fade-in-delay-2">
-        <div class="stat-num">1 / 20</div>
-        <div class="stat-label">Koreans Suffer a Depression Episode in Their Lifetime</div>
-        <div class="stat-sub">The prevalence is even higher in fast-paced societies like Korea.</div>
-      </div>
-      <div class="stat-card fade-in fade-in-delay-3">
-        <div class="stat-num">&lt;50%</div>
-        <div class="stat-label">Actually Receive Help</div>
-        <div class="stat-sub">Less than half of those who need treatment ever seek or receive it.</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ─── ABOUT ─── -->
-<section class="about" id="about">
-  <div class="about-inner">
-    <div class="about-text">
-      <div class="section-eyebrow fade-in">About HAPY</div>
-      <h2 class="section-title fade-in fade-in-delay-1">Designed to heal,<br/>built to care</h2>
-      <p class="fade-in fade-in-delay-2">
-        HAPY is a digital mental health platform that combines AI-powered conversation, community support, and expert content — all in one intuitive app.
+    <!-- ─── FEATURES ─── -->
+    <section class="features" id="features">
+      <div class="features-inner">
+        <div class="section-eyebrow fade-in">Features</div>
+        <h2 class="section-title fade-in fade-in-delay-1">
+          Everything you need to feel better
+        </h2>
+        <p class="section-desc fade-in fade-in-delay-2">
+          Five powerful sections designed around your mental health journey —
+          from daily news to AI-powered conversations.
+        </p>
+        <div class="features-grid">
+          <div class="feature-card fade-in fade-in-delay-1">
+            <div class="feature-icon">🏠</div>
+            <h3>Home</h3>
+            <p>
+              Your personalized dashboard keeps you informed and motivated every
+              day.
+            </p>
+            <ul class="feature-list">
+              <li>App news & updates</li>
+              <li>Personalized recommendations</li>
+              <li>Upcoming events & challenges</li>
+              <li>Subscription highlights</li>
+            </ul>
+          </div>
+          <div class="feature-card fade-in fade-in-delay-2">
+            <div class="feature-icon">💬</div>
+            <h3>Community</h3>
+            <p>
+              Share concerns, join challenges, and connect with others on the
+              same journey.
+            </p>
+            <ul class="feature-list">
+              <li>Daily challenge board</li>
+              <li>Popularity articles</li>
+              <li>Expert opinions</li>
+              <li>Overcoming depression board</li>
+            </ul>
+          </div>
+          <div class="feature-card fade-in fade-in-delay-3">
+            <div class="feature-icon">📖</div>
+            <h3>Magazine</h3>
+            <p>
+              Expert columns and curated content to inform and inspire your
+              mental health journey.
+            </p>
+            <ul class="feature-list">
+              <li>Expert-written columns</li>
+              <li>Wellness & lifestyle topics</li>
+              <li>Depression research insights</li>
+              <li>Inspirational stories</li>
+            </ul>
+          </div>
+          <!-- Large AI card -->
+          <div class="feature-card large fade-in fade-in-delay-1" id="ai">
+            <div>
+              <div class="feature-icon">🤖</div>
+              <h3>HAPY AI</h3>
+              <p>
+                Your always-available AI companion, powered by generative AI.
+                Chat, call, or video — anytime you need support.
+              </p>
+              <ul class="feature-list">
+                <li>Chat consulting (24/7)</li>
+                <li>Voice call support</li>
+                <li>FaceTime-style video</li>
+                <li>Context-aware responses</li>
+              </ul>
+            </div>
+            <div class="feature-ai-visual">
+              <span class="ai-bubble">Continuous Learning</span>
+              <span class="ai-bubble">Natural Language</span>
+              <span class="ai-bubble">Conversation & Interaction</span>
+              <span class="ai-bubble">Custom Content Generation</span>
+              <span class="ai-bubble">Automation</span>
+              <span class="ai-bubble">Creativity & Diversity</span>
+              <span class="ai-bubble">Diverse Applications</span>
+              <span class="ai-bubble">Process Improvement</span>
+            </div>
+          </div>
+          <div class="feature-card fade-in fade-in-delay-3">
+            <div class="feature-icon">👤</div>
+            <h3>Profile</h3>
+            <p>
+              Track your mental state over time with the depression scale and
+              personalized stickers.
+            </p>
+            <ul class="feature-list">
+              <li>PHQ-9 depression test</li>
+              <li>3-level severity scale</li>
+              <li>7 depression type categories</li>
+              <li>My Challenges tracker</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── JOURNEY MAP ─── -->
+    <section class="journey">
+      <div class="journey-inner">
+        <div class="section-eyebrow fade-in">User Journey</div>
+        <h2 class="section-title fade-in fade-in-delay-1">
+          HAPY walks with you through the day
+        </h2>
+        <p class="section-desc fade-in fade-in-delay-2">
+          See how HAPY transforms a difficult day into a night of peace and
+          comfort.
+        </p>
+        <div class="journey-map fade-in fade-in-delay-3">
+          <div class="journey-persona">
+            <div class="persona-chip">SiEun Ma</div>
+            <div class="persona-chip">Age: 27</div>
+            <div class="persona-chip">Office Worker</div>
+            <div class="persona-problem">
+              Problem: She experienced depression due to an overwhelming work
+              life and seeks a friend to listen to her story.
+            </div>
+          </div>
+          <div class="journey-timeline">
+            <div class="journey-step">
+              <div class="journey-dot"></div>
+              <div class="journey-stage">Commutes to Office</div>
+            </div>
+            <div class="journey-step">
+              <div class="journey-dot"></div>
+              <div class="journey-stage">Works at Company</div>
+            </div>
+            <div class="journey-step">
+              <div class="journey-dot"></div>
+              <div class="journey-stage">Returns Home</div>
+            </div>
+            <div class="journey-step">
+              <div class="journey-dot highlight"></div>
+              <div
+                class="journey-stage"
+                style="background: #9333ea; color: #fff"
+              >
+                Chats with HAPY ✦
+              </div>
+            </div>
+            <div class="journey-step">
+              <div class="journey-dot"></div>
+              <div class="journey-stage">Goes to Sleep</div>
+            </div>
+          </div>
+          <div class="journey-cards">
+            <div class="j-card">
+              Thinking about strenuous labor as she commutes to work. Already
+              starting to feel bad.
+            </div>
+            <div class="j-card">
+              Received additional tasks from superior. Gradually feeling worse.
+            </div>
+            <div class="j-card">
+              Long commute home feels dull. Turns on the HAPY app and begins
+              chatting.
+            </div>
+            <div class="j-card highlight">
+              She engages in a conversation with HAPY while heading back home.
+              She finds comfort for her heart through HAPY. 💜
+            </div>
+            <div class="j-card">
+              With a completely lightened heart, she drifts off to sleep.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PRICING ─── -->
+    <section class="pricing" id="pricing">
+      <div class="pricing-inner">
+        <div class="section-eyebrow fade-in">Pricing</div>
+        <h2 class="section-title fade-in fade-in-delay-1">Choose your plan</h2>
+        <p class="section-desc fade-in fade-in-delay-2">
+          Start free and upgrade anytime. Traditional therapy costs $130 per
+          session — HAPY gives you continuous support for a fraction of the
+          price.
+        </p>
+        <div class="pricing-grid">
+          <!-- Basic -->
+          <div class="pricing-card fade-in fade-in-delay-1">
+            <div class="plan-name">HAPY Basic</div>
+            <div class="plan-price-wrap">
+              <div class="plan-price">Free</div>
+              <div class="plan-period">Forever free plan</div>
+            </div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span>Community access</li>
+              <li><span class="check">✓</span>App news & updates</li>
+              <li><span class="check">✓</span>PHQ-9 depression test</li>
+              <li><span class="check">✓</span>Magazine reading</li>
+            </ul>
+            <button class="plan-btn plan-btn-outline">Select Membership</button>
+          </div>
+          <!-- Standard (Popular) -->
+          <div class="pricing-card popular fade-in fade-in-delay-2">
+            <div class="popular-badge">Most Popular</div>
+            <div class="plan-name">HAPY Standard</div>
+            <div class="plan-price-wrap">
+              <div class="plan-price">₩8,900</div>
+              <div class="plan-period">/month (including VAT)</div>
+              <div class="plan-annual">or ₩89,000 annually</div>
+            </div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span>Everything in Basic</li>
+              <li><span class="check">✓</span>HAPY AI chatbot (24/7)</li>
+              <li><span class="check">✓</span>Voice call points (300p)</li>
+              <li><span class="check">✓</span>Priority community features</li>
+            </ul>
+            <button class="plan-btn plan-btn-solid">Select Membership</button>
+          </div>
+          <!-- Premium -->
+          <div class="pricing-card fade-in fade-in-delay-3">
+            <div class="plan-name">HAPY Premium</div>
+            <div class="plan-price-wrap">
+              <div class="plan-price">₩12,900</div>
+              <div class="plan-period">/month (including VAT)</div>
+              <div class="plan-annual">or ₩129,000 annually</div>
+            </div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span>Everything in Standard</li>
+              <li><span class="check">✓</span>Voice call points (500p)</li>
+              <li><span class="check">✓</span>Video telephony (FaceTime)</li>
+              <li><span class="check">✓</span>Advanced AI personalization</li>
+            </ul>
+            <button class="plan-btn plan-btn-outline">Select Membership</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA BAND ─── -->
+    <section class="cta-band">
+      <h2 class="fade-in">Download HAPY Today</h2>
+      <p class="fade-in fade-in-delay-1">
+        Join thousands of people on the path to happiness. Available on iOS and
+        Android — free to start.
       </p>
-      <p class="fade-in fade-in-delay-3">
-        Traditional therapy costs $130+ per session. HAPY delivers continuous, personalized support for just $12 a month — making mental health care accessible to everyone.
-      </p>
-      <div class="about-tags fade-in fade-in-delay-4">
-        <span class="about-tag">Purple Tone & Mood</span>
-        <span class="about-tag">Geometric Design</span>
-        <span class="about-tag">Simple & Modern</span>
-        <span class="about-tag">Responsive</span>
+      <div class="cta-store-btns">
+        <a class="cta-store-btn fade-in fade-in-delay-2" href="#">
+          <span class="icon">🍎</span>
+          <span class="text">
+            <span class="sub">Download on the</span>
+            <span class="name">App Store</span>
+          </span>
+        </a>
+        <a class="cta-store-btn fade-in fade-in-delay-3" href="#">
+          <span class="icon">▶</span>
+          <span class="text">
+            <span class="sub">Get it on</span>
+            <span class="name">Google Play</span>
+          </span>
+        </a>
       </div>
-    </div>
-    <div class="about-cards fade-in fade-in-delay-2">
-      <div class="about-card">
-        <div class="about-card-icon">💜</div>
-        <h4>Mental Health First</h4>
-        <p>Every feature is designed with evidence-based mental health principles.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-card-icon">🤖</div>
-        <h4>Generative AI</h4>
-        <p>HAPY AI learns your patterns and provides personalized, empathetic responses.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-card-icon">🌐</div>
-        <h4>Community Driven</h4>
-        <p>Connect with others, share challenges, and build a healthier support system.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-card-icon">🔒</div>
-        <h4>Private & Secure</h4>
-        <p>Your data is protected with strict privacy policies and user consent.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ─── FEATURES ─── -->
-<section class="features" id="features">
-  <div class="features-inner">
-    <div class="section-eyebrow fade-in">Features</div>
-    <h2 class="section-title fade-in fade-in-delay-1">Everything you need to feel better</h2>
-    <p class="section-desc fade-in fade-in-delay-2">
-      Five powerful sections designed around your mental health journey — from daily news to AI-powered conversations.
-    </p>
-    <div class="features-grid">
-      <div class="feature-card fade-in fade-in-delay-1">
-        <div class="feature-icon">🏠</div>
-        <h3>Home</h3>
-        <p>Your personalized dashboard keeps you informed and motivated every day.</p>
-        <ul class="feature-list">
-          <li>App news & updates</li>
-          <li>Personalized recommendations</li>
-          <li>Upcoming events & challenges</li>
-          <li>Subscription highlights</li>
-        </ul>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-2">
-        <div class="feature-icon">💬</div>
-        <h3>Community</h3>
-        <p>Share concerns, join challenges, and connect with others on the same journey.</p>
-        <ul class="feature-list">
-          <li>Daily challenge board</li>
-          <li>Popularity articles</li>
-          <li>Expert opinions</li>
-          <li>Overcoming depression board</li>
-        </ul>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-3">
-        <div class="feature-icon">📖</div>
-        <h3>Magazine</h3>
-        <p>Expert columns and curated content to inform and inspire your mental health journey.</p>
-        <ul class="feature-list">
-          <li>Expert-written columns</li>
-          <li>Wellness & lifestyle topics</li>
-          <li>Depression research insights</li>
-          <li>Inspirational stories</li>
-        </ul>
-      </div>
-      <!-- Large AI card -->
-      <div class="feature-card large fade-in fade-in-delay-1" id="ai">
-        <div>
-          <div class="feature-icon">🤖</div>
-          <h3>HAPY AI</h3>
-          <p>Your always-available AI companion, powered by generative AI. Chat, call, or video — anytime you need support.</p>
-          <ul class="feature-list">
-            <li>Chat consulting (24/7)</li>
-            <li>Voice call support</li>
-            <li>FaceTime-style video</li>
-            <li>Context-aware responses</li>
+    <!-- ─── FOOTER ─── -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg
+            viewBox="0 0 130 52"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style="width: 64px; height: auto"
+          >
+            <rect x="0" y="4" width="8" height="44" rx="1" fill="#a855f7" />
+            <rect x="13" y="4" width="8" height="44" rx="1" fill="#a855f7" />
+            <rect x="0" y="22" width="21" height="8" rx="1" fill="#a855f7" />
+            <path
+              d="M32 48 L44 4 L56 48"
+              stroke="#a855f7"
+              stroke-width="8"
+              stroke-linejoin="round"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <line
+              x1="35"
+              y1="32"
+              x2="53"
+              y2="32"
+              stroke="#a855f7"
+              stroke-width="7"
+              stroke-linecap="round"
+            />
+            <rect x="66" y="4" width="8" height="44" rx="1" fill="#a855f7" />
+            <path
+              d="M74 4 Q96 4 96 18 Q96 32 74 32"
+              stroke="#a855f7"
+              stroke-width="8"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <line
+              x1="108"
+              y1="4"
+              x2="120"
+              y2="22"
+              stroke="#a855f7"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+            <line
+              x1="130"
+              y1="4"
+              x2="120"
+              y2="22"
+              stroke="#a855f7"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+            <line
+              x1="120"
+              y1="22"
+              x2="120"
+              y2="48"
+              stroke="#a855f7"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+          </svg>
+          <p>
+            Be Happy, With Hapy. A digital mental health companion designed to
+            help you escape depression and find happiness — one conversation at
+            a time.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#">Download</a></li>
+            <li><a href="#">What's New</a></li>
           </ul>
         </div>
-        <div class="feature-ai-visual">
-          <span class="ai-bubble">Continuous Learning</span>
-          <span class="ai-bubble">Natural Language</span>
-          <span class="ai-bubble">Conversation & Interaction</span>
-          <span class="ai-bubble">Custom Content Generation</span>
-          <span class="ai-bubble">Automation</span>
-          <span class="ai-bubble">Creativity & Diversity</span>
-          <span class="ai-bubble">Diverse Applications</span>
-          <span class="ai-bubble">Process Improvement</span>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Data Policy</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
         </div>
       </div>
-      <div class="feature-card fade-in fade-in-delay-3">
-        <div class="feature-icon">👤</div>
-        <h3>Profile</h3>
-        <p>Track your mental state over time with the depression scale and personalized stickers.</p>
-        <ul class="feature-list">
-          <li>PHQ-9 depression test</li>
-          <li>3-level severity scale</li>
-          <li>7 depression type categories</li>
-          <li>My Challenges tracker</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── JOURNEY MAP ─── -->
-<section class="journey">
-  <div class="journey-inner">
-    <div class="section-eyebrow fade-in">User Journey</div>
-    <h2 class="section-title fade-in fade-in-delay-1">HAPY walks with you through the day</h2>
-    <p class="section-desc fade-in fade-in-delay-2">
-      See how HAPY transforms a difficult day into a night of peace and comfort.
-    </p>
-    <div class="journey-map fade-in fade-in-delay-3">
-      <div class="journey-persona">
-        <div class="persona-chip">SiEun Ma</div>
-        <div class="persona-chip">Age: 27</div>
-        <div class="persona-chip">Office Worker</div>
-        <div class="persona-problem">
-          Problem: She experienced depression due to an overwhelming work life and seeks a friend to listen to her story.
+      <div class="footer-bottom">
+        <p>
+          © 2024 HAPY — Team Happy Cat. Global Start-Up Design Thinking
+          Hackathon.
+        </p>
+        <div class="footer-social">
+          <a class="social-btn" href="#">𝕏</a>
+          <a class="social-btn" href="#">in</a>
+          <a class="social-btn" href="#">ig</a>
         </div>
       </div>
-      <div class="journey-timeline">
-        <div class="journey-step">
-          <div class="journey-dot"></div>
-          <div class="journey-stage">Commutes to Office</div>
-        </div>
-        <div class="journey-step">
-          <div class="journey-dot"></div>
-          <div class="journey-stage">Works at Company</div>
-        </div>
-        <div class="journey-step">
-          <div class="journey-dot"></div>
-          <div class="journey-stage">Returns Home</div>
-        </div>
-        <div class="journey-step">
-          <div class="journey-dot highlight"></div>
-          <div class="journey-stage" style="background:#9333ea;color:#fff;">Chats with HAPY ✦</div>
-        </div>
-        <div class="journey-step">
-          <div class="journey-dot"></div>
-          <div class="journey-stage">Goes to Sleep</div>
-        </div>
-      </div>
-      <div class="journey-cards">
-        <div class="j-card">Thinking about strenuous labor as she commutes to work. Already starting to feel bad.</div>
-        <div class="j-card">Received additional tasks from superior. Gradually feeling worse.</div>
-        <div class="j-card">Long commute home feels dull. Turns on the HAPY app and begins chatting.</div>
-        <div class="j-card highlight">She engages in a conversation with HAPY while heading back home. She finds comfort for her heart through HAPY. 💜</div>
-        <div class="j-card">With a completely lightened heart, she drifts off to sleep.</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- ─── PRICING ─── -->
-<section class="pricing" id="pricing">
-  <div class="pricing-inner">
-    <div class="section-eyebrow fade-in">Pricing</div>
-    <h2 class="section-title fade-in fade-in-delay-1">Choose your plan</h2>
-    <p class="section-desc fade-in fade-in-delay-2">
-      Start free and upgrade anytime. Traditional therapy costs $130 per session — HAPY gives you continuous support for a fraction of the price.
-    </p>
-    <div class="pricing-grid">
-      <!-- Basic -->
-      <div class="pricing-card fade-in fade-in-delay-1">
-        <div class="plan-name">HAPY Basic</div>
-        <div class="plan-price-wrap">
-          <div class="plan-price">Free</div>
-          <div class="plan-period">Forever free plan</div>
-        </div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span>Community access</li>
-          <li><span class="check">✓</span>App news & updates</li>
-          <li><span class="check">✓</span>PHQ-9 depression test</li>
-          <li><span class="check">✓</span>Magazine reading</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline">Select Membership</button>
-      </div>
-      <!-- Standard (Popular) -->
-      <div class="pricing-card popular fade-in fade-in-delay-2">
-        <div class="popular-badge">Most Popular</div>
-        <div class="plan-name">HAPY Standard</div>
-        <div class="plan-price-wrap">
-          <div class="plan-price">₩8,900</div>
-          <div class="plan-period">/month (including VAT)</div>
-          <div class="plan-annual">or ₩89,000 annually</div>
-        </div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span>Everything in Basic</li>
-          <li><span class="check">✓</span>HAPY AI chatbot (24/7)</li>
-          <li><span class="check">✓</span>Voice call points (300p)</li>
-          <li><span class="check">✓</span>Priority community features</li>
-        </ul>
-        <button class="plan-btn plan-btn-solid">Select Membership</button>
-      </div>
-      <!-- Premium -->
-      <div class="pricing-card fade-in fade-in-delay-3">
-        <div class="plan-name">HAPY Premium</div>
-        <div class="plan-price-wrap">
-          <div class="plan-price">₩12,900</div>
-          <div class="plan-period">/month (including VAT)</div>
-          <div class="plan-annual">or ₩129,000 annually</div>
-        </div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span>Everything in Standard</li>
-          <li><span class="check">✓</span>Voice call points (500p)</li>
-          <li><span class="check">✓</span>Video telephony (FaceTime)</li>
-          <li><span class="check">✓</span>Advanced AI personalization</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline">Select Membership</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CTA BAND ─── -->
-<section class="cta-band">
-  <h2 class="fade-in">Download HAPY Today</h2>
-  <p class="fade-in fade-in-delay-1">
-    Join thousands of people on the path to happiness. Available on iOS and Android — free to start.
-  </p>
-  <div class="cta-store-btns">
-    <a class="cta-store-btn fade-in fade-in-delay-2" href="#">
-      <span class="icon">🍎</span>
-      <span class="text">
-        <span class="sub">Download on the</span>
-        <span class="name">App Store</span>
-      </span>
-    </a>
-    <a class="cta-store-btn fade-in fade-in-delay-3" href="#">
-      <span class="icon">▶</span>
-      <span class="text">
-        <span class="sub">Get it on</span>
-        <span class="name">Google Play</span>
-      </span>
-    </a>
-  </div>
-</section>
-
-<!-- ─── FOOTER ─── -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <svg viewBox="0 0 130 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:auto">
-        <rect x="0"  y="4" width="8"  height="44" rx="1" fill="#a855f7"/>
-        <rect x="13" y="4" width="8"  height="44" rx="1" fill="#a855f7"/>
-        <rect x="0"  y="22" width="21" height="8" rx="1" fill="#a855f7"/>
-        <path d="M32 48 L44 4 L56 48" stroke="#a855f7" stroke-width="8" stroke-linejoin="round" fill="none" stroke-linecap="round"/>
-        <line x1="35" y1="32" x2="53" y2="32" stroke="#a855f7" stroke-width="7" stroke-linecap="round"/>
-        <rect x="66" y="4" width="8" height="44" rx="1" fill="#a855f7"/>
-        <path d="M74 4 Q96 4 96 18 Q96 32 74 32" stroke="#a855f7" stroke-width="8" stroke-linejoin="round" fill="none"/>
-        <line x1="108" y1="4"  x2="120" y2="22" stroke="#a855f7" stroke-width="8" stroke-linecap="round"/>
-        <line x1="130" y1="4"  x2="120" y2="22" stroke="#a855f7" stroke-width="8" stroke-linecap="round"/>
-        <line x1="120" y1="22" x2="120" y2="48" stroke="#a855f7" stroke-width="8" stroke-linecap="round"/>
-      </svg>
-      <p>
-        Be Happy, With Hapy. A digital mental health companion designed to help you escape depression and find happiness — one conversation at a time.
-      </p>
-    </div>
-    <div class="footer-col">
-      <h5>Product</h5>
-      <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#">Download</a></li>
-        <li><a href="#">What's New</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Company</h5>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Press</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Legal</h5>
-      <ul>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Data Policy</a></li>
-        <li><a href="#">Support</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2024 HAPY — Team Happy Cat. Global Start-Up Design Thinking Hackathon.</p>
-    <div class="footer-social">
-      <a class="social-btn" href="#">𝕏</a>
-      <a class="social-btn" href="#">in</a>
-      <a class="social-btn" href="#">ig</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // ── Navbar scroll effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // ── Scroll fade-in observer
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.12 });
-  fadeEls.forEach(el => observer.observe(el));
-
-  // ── Counter animation for 280M stat
-  function animateCounter(el, target, duration = 2000) {
-    let start = 0;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        clearInterval(timer);
-        el.textContent = target.toLocaleString();
-      } else {
-        el.textContent = Math.floor(start).toLocaleString();
-      }
-    }, 16);
-  }
-
-  const counterEl = document.querySelector('[data-target]');
-  if (counterEl) {
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          animateCounter(counterEl, parseInt(counterEl.dataset.target));
-          counterObserver.unobserve(e.target);
-        }
+    <script>
+      // ── Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 60);
       });
-    }, { threshold: 0.5 });
-    counterObserver.observe(counterEl);
-  }
 
-  // ── Hover glow on stat cards
-  document.querySelectorAll('.stat-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(147,51,234,.06), white 60%)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.background = '';
-    });
-  });
+      // ── Scroll fade-in observer
+      const fadeEls = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      fadeEls.forEach((el) => observer.observe(el));
 
-  // ── Pricing card hover highlight
-  document.querySelectorAll('.pricing-card:not(.popular)').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.borderColor = 'rgba(147,51,234,.3)';
-      card.style.border = '1.5px solid rgba(147,51,234,.25)';
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.border = '';
-    });
-  });
-</script>
-</body>
+      // ── Counter animation for 280M stat
+      function animateCounter(el, target, duration = 2000) {
+        let start = 0;
+        const step = target / (duration / 16);
+        const timer = setInterval(() => {
+          start += step;
+          if (start >= target) {
+            clearInterval(timer);
+            el.textContent = target.toLocaleString();
+          } else {
+            el.textContent = Math.floor(start).toLocaleString();
+          }
+        }, 16);
+      }
+
+      const counterEl = document.querySelector("[data-target]");
+      if (counterEl) {
+        const counterObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                animateCounter(counterEl, parseInt(counterEl.dataset.target));
+                counterObserver.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+        counterObserver.observe(counterEl);
+      }
+
+      // ── Hover glow on stat cards
+      document.querySelectorAll(".stat-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(147,51,234,.06), white 60%)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.background = "";
+        });
+      });
+
+      // ── Pricing card hover highlight
+      document
+        .querySelectorAll(".pricing-card:not(.popular)")
+        .forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            card.style.borderColor = "rgba(147,51,234,.3)";
+            card.style.border = "1.5px solid rgba(147,51,234,.25)";
+          });
+          card.addEventListener("mouseleave", () => {
+            card.style.border = "";
+          });
+        });
+    </script>
+  </body>
 </html>
