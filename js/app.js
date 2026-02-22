@@ -241,6 +241,10 @@ function showToast(msg) {
 function now() {
   return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
 }
+function updateStatusTime() {
+  const t = new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:false});
+  document.querySelectorAll('.status-time').forEach(el => el.textContent = t);
+}
 function getGreetingTime() {
   const h = new Date().getHours();
   if (h < 12) return { label:'Good morning', time:'Morning' };
@@ -260,6 +264,9 @@ function showScreen(id) {
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
+  updateStatusTime();
+  setInterval(updateStatusTime, 30000);
+
   document.querySelectorAll('.terms-check').forEach(cb => {
     cb.addEventListener('change', checkTerms);
   });
@@ -304,8 +311,9 @@ function renderPHQ9Question() {
   const opts = document.getElementById('phq9-options');
   opts.innerHTML = PHQ9_OPTS.map(o => `
     <button class="phq9-option" onclick="answerPHQ9(${o.value})">
-      <span>${o.label}</span>
-      <span class="option-score">${o.value}</span>
+      <span class="option-dot"></span>
+      <span class="option-label">${o.label}</span>
+      <span class="option-value">${o.value}</span>
     </button>`).join('');
 }
 
@@ -313,7 +321,7 @@ function answerPHQ9(val) {
   S.phq9Answers.push(val);
   const btns = document.querySelectorAll('.phq9-option');
   btns.forEach(b => {
-    if (parseInt(b.querySelector('.option-score').textContent) === val) b.classList.add('selected');
+    if (parseInt(b.querySelector('.option-value').textContent) === val) b.classList.add('selected');
   });
   setTimeout(() => {
     S.phq9Q++;
@@ -343,9 +351,10 @@ function showResult() {
   document.getElementById('result-badge').style.border = `2px solid ${level.color}40`;
   document.getElementById('result-title').textContent = level.label;
   document.getElementById('result-desc').textContent  = level.desc;
-  document.getElementById('result-type-chip').innerHTML = `<span>${type.emoji}</span><span>${type.name} Type</span>`;
+  const chipsEl = document.getElementById('result-chips');
+  if (chipsEl) chipsEl.innerHTML = `<span class="result-chip">${type.emoji} ${type.name} Type</span><span class="result-chip">Score: ${score}</span>`;
 
-  document.querySelectorAll('.scale-item').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.scale-pill').forEach(s => s.classList.remove('active'));
   const scaleEl = document.getElementById('scale-' + level.scale);
   if (scaleEl) scaleEl.classList.add('active');
 
@@ -391,18 +400,21 @@ function switchPage(page, el) {
 }
 
 function updateHeader(page) {
-  const titles = { home:'HAPY', community:'Community', hapy:'', magazine:'', profile:'Profile' };
-  const headerEl = document.getElementById('app-header');
-  const logoEl   = document.getElementById('app-header-logo');
-  const titleEl  = document.getElementById('app-header-title');
-  const actions  = document.getElementById('app-header-actions');
+  const titles = { home:'HAPY', community:'Community', hapy:'', magazine:'Magazine', profile:'Profile' };
+  const headerEl   = document.getElementById('app-header');
+  const statusBar  = document.getElementById('app-status-bar');
+  const logoEl     = document.getElementById('app-header-logo');
+  const titleEl    = document.getElementById('app-header-title');
+  const actions    = document.getElementById('app-header-actions');
 
-  // Hide main header for HAPY page (it has its own chat-header)
+  // Hide shared header & status bar for chat page (has its own chat-header)
   if (page === 'hapy') {
     headerEl.style.display = 'none';
+    if (statusBar) statusBar.style.display = 'none';
     return;
   }
   headerEl.style.display = 'flex';
+  if (statusBar) statusBar.style.display = 'flex';
 
   // Show logo on home
   if (page === 'home') {
@@ -423,6 +435,17 @@ function updateHeader(page) {
   }
 }
 
+const TIPS = [
+  "Take 5 slow, deep breaths. Your nervous system will thank you.",
+  "Step outside for 10 minutes. Sunlight can shift your mood.",
+  "Text one person you care about today — just to say hi.",
+  "Drink a glass of water. Hydration affects how you feel.",
+  "Write down one thing you're grateful for, however small.",
+  "A 20-minute walk has the same antidepressant effect as medication for mild depression.",
+  "You don't have to feel 100% to start. You start to feel better.",
+  "Rest is productive. Your body and mind need recovery time."
+];
+
 /* ── HOME ── */
 function renderHome() {
   // Greeting
@@ -431,14 +454,17 @@ function renderHome() {
   const streak = S.user?.streak || 1;
   document.getElementById('greeting-time-label').textContent = time;
   document.getElementById('greeting-name').textContent = `${label}, ${name}!`;
-  document.getElementById('greeting-sub').textContent = "You're doing great. Let's check in today.";
-  document.getElementById('greeting-streak-text').textContent = `${streak} day${streak !== 1 ? 's' : ''} with HAPY`;
+  document.getElementById('hero-streak').textContent = `${streak} day${streak !== 1 ? 's' : ''}`;
+
+  // Tip of the day
+  const tipEl = document.getElementById('tip-text');
+  if (tipEl) tipEl.textContent = TIPS[new Date().getDay() % TIPS.length];
 
   // Restore today's mood if logged
   const today = new Date().toDateString();
   const todayMood = S.moodLog.find(m => m.date === today);
   if (todayMood) {
-    document.querySelectorAll('.mood-btn').forEach(btn => {
+    document.querySelectorAll('.hero-mood-btn').forEach(btn => {
       if (btn.getAttribute('onclick').includes(todayMood.mood)) btn.classList.add('selected');
     });
   }
@@ -487,7 +513,7 @@ function renderHome() {
 }
 
 function selectMood(btn, mood) {
-  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.hero-mood-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   const today = new Date().toDateString();
   S.moodLog = S.moodLog.filter(m => m.date !== today);
@@ -506,9 +532,9 @@ function renderCommunity() {
 
   document.getElementById('board-list').innerHTML = BOARDS.map(b => `
     <div class="board-card" onclick="openBoard('${b.id}')">
-      <div class="board-card-icon">${b.icon}</div>
-      <div class="board-card-name">${b.name}</div>
-      <div class="board-card-count">${b.count} posts</div>
+      <div class="board-icon">${b.icon}</div>
+      <div class="board-name">${b.name}</div>
+      <div class="board-count">${b.count} posts</div>
     </div>`).join('');
 }
 
@@ -661,9 +687,17 @@ const HAPY_AVATAR_SVG = `<svg viewBox="0 0 60 26" fill="none">
   <path d="M39 1 Q51 1 51 10 Q51 19 39 19" stroke="white" stroke-width="4.8" fill="none"/>
 </svg>`;
 
+const CHAT_SUGGESTIONS = [
+  "I'm feeling anxious today",
+  "I can't sleep well lately",
+  "I feel lonely",
+  "Help me calm down",
+  "I'm feeling good today! 😊"
+];
+
 function initChat() {
   const container = document.getElementById('chat-messages');
-  container.innerHTML = `<div class="chat-date-divider">Today</div>`;
+  container.innerHTML = `<div class="chat-date-pill">Today</div>`;
   if (S.chatMessages.length === 0) {
     const name = S.user?.name || '';
     const greeting = `Hello${name ? ', '+name : ''}! 😊 I'm HAPY, your personal mental health companion.\n\nI'm here to listen, support, and help you through whatever you're facing. How are you feeling today? 💜`;
@@ -672,6 +706,20 @@ function initChat() {
     S.chatMessages.forEach(m => renderMessage(m));
     scrollChatBottom();
   }
+
+  // Populate suggestion chips
+  const sugEl = document.getElementById('chat-suggestions');
+  if (sugEl) {
+    sugEl.innerHTML = CHAT_SUGGESTIONS.map(s =>
+      `<button class="suggestion-chip" onclick="useSuggestion(this,'${s.replace(/'/g,"&#39;")}')">${s}</button>`
+    ).join('');
+  }
+}
+
+function useSuggestion(btn, text) {
+  btn.remove();
+  document.getElementById('chat-input').value = text;
+  sendChatMessage();
 }
 
 function renderMessage(msg) {
@@ -796,28 +844,74 @@ function toggleMute() {
   showToast(S.muted ? 'Muted 🔇' : 'Unmuted 🔊');
 }
 
+/* ── BREATHING ── */
+function openBreathing() {
+  let phase = 0; // 0=inhale,1=hold,2=exhale
+  let count = 0;
+  const phases = [
+    { label:'Inhale', duration:4, color:'#6D28D9' },
+    { label:'Hold',   duration:4, color:'#7C3AED' },
+    { label:'Exhale', duration:6, color:'#A78BFA' }
+  ];
+  let interval = null;
+
+  function renderBreathing(secondsLeft) {
+    const p = phases[phase];
+    const bodyEl = document.getElementById('modal-body');
+    if (!bodyEl) return;
+    bodyEl.querySelector('#breath-phase').textContent = p.label;
+    bodyEl.querySelector('#breath-count').textContent = secondsLeft;
+    bodyEl.querySelector('#breath-circle').style.transform =
+      phase === 0 ? `scale(${1 + (p.duration - secondsLeft) * 0.08})` :
+      phase === 2 ? `scale(${1.64 - (p.duration - secondsLeft) * 0.08})` : 'scale(1.64)';
+  }
+
+  openModal(`<div class="modal-handle"></div>
+    <div class="modal-title">Box Breathing</div>
+    <p style="font-size:.85rem;color:#6B7280;text-align:center;margin-bottom:24px">4-4-6 breathing to calm your nervous system</p>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:16px 0">
+      <div id="breath-circle" style="width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#6D28D9,#A78BFA);display:flex;align-items:center;justify-content:center;transition:transform 1s ease-in-out;box-shadow:0 0 40px #6D28D940">
+        <span id="breath-count" style="font-size:2.5rem;font-weight:700;color:white">4</span>
+      </div>
+      <div id="breath-phase" style="font-size:1.1rem;font-weight:600;color:#6D28D9">Inhale</div>
+    </div>
+    <button class="btn-primary" onclick="closeModal()" style="margin-top:8px">Done</button>`);
+
+  let secondsLeft = phases[0].duration;
+  interval = setInterval(() => {
+    if (!document.getElementById('modal-body')) { clearInterval(interval); return; }
+    secondsLeft--;
+    if (secondsLeft <= 0) {
+      phase = (phase + 1) % 3;
+      secondsLeft = phases[phase].duration;
+    }
+    renderBreathing(secondsLeft);
+  }, 1000);
+  renderBreathing(secondsLeft);
+}
+
 /* ── MAGAZINE ── */
 function renderMagazine() {
   // Featured (first article)
   const featured = MAGAZINE_ARTICLES[0];
   document.getElementById('magazine-featured-wrap').innerHTML = `
-    <div class="magazine-featured" onclick="openArticle(${featured.id})">
-      <div class="magazine-feat-img" style="background:${featured.gradient}">${featured.emoji}</div>
-      <div class="magazine-feat-body">
-        <div class="magazine-feat-cat">${featured.category}</div>
-        <div class="magazine-feat-title">${featured.title}</div>
-        <div class="magazine-feat-author">${featured.author}</div>
+    <div class="mag-featured" onclick="openArticle(${featured.id})">
+      <div class="mag-feat-img" style="background:${featured.gradient}">${featured.emoji}</div>
+      <div class="mag-feat-body">
+        <div class="mag-feat-cat">${featured.category}</div>
+        <div class="mag-feat-title">${featured.title}</div>
+        <div class="mag-feat-author">${featured.author}</div>
       </div>
     </div>`;
 
   // Grid (remaining articles)
   document.getElementById('magazine-list').innerHTML = MAGAZINE_ARTICLES.slice(1).map(a => `
-    <div class="magazine-card" onclick="openArticle(${a.id})">
-      <div class="magazine-card-img" style="background:${a.gradient}">${a.emoji}</div>
-      <div class="magazine-card-body">
-        <div class="magazine-category">${a.category}</div>
-        <div class="magazine-title">${a.title}</div>
-        <div class="magazine-author">${a.author}</div>
+    <div class="mag-card" onclick="openArticle(${a.id})">
+      <div class="mag-card-img" style="background:${a.gradient}">${a.emoji}</div>
+      <div class="mag-card-body">
+        <div class="mag-card-cat">${a.category}</div>
+        <div class="mag-card-title">${a.title}</div>
+        <div class="mag-card-author">${a.author}</div>
       </div>
     </div>`).join('');
 }
@@ -826,12 +920,12 @@ function openArticle(id) {
   const a = MAGAZINE_ARTICLES.find(x => x.id === id);
   if (!a) return;
   document.getElementById('magazine-article-content').innerHTML = `
-    <div class="magazine-article-wrap">
+    <div class="article-wrap">
       <div class="article-hero" style="background:${a.gradient}">${a.emoji}</div>
       <div class="article-category">${a.category}</div>
       <div class="article-title">${a.title}</div>
       <div class="article-author">${a.author}</div>
-      <div class="article-body">${a.body}</div>
+      <div class="article-body">${a.body.replace(/\n/g,'<br>')}</div>
     </div>`;
   document.getElementById('magazine-main').style.display = 'none';
   document.getElementById('magazine-detail').style.display = 'flex';

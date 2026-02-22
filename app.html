@@ -4,465 +4,322 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
   <title>HAPY</title>
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 <div id="app">
 
-  <!-- ══════════ SPLASH ══════════ -->
-  <div id="screen-splash" class="screen active">
-    <div class="splash-circle splash-c1"></div>
-    <div class="splash-circle splash-c2"></div>
-    <div class="splash-inner">
-      <div class="splash-logo-wrap">
-        <!-- HAPY Logo (from PDF) -->
-        <svg viewBox="0 0 220 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- H -->
-          <rect x="0"  y="4" width="14" height="80" rx="3" fill="white"/>
-          <rect x="22" y="4" width="14" height="80" rx="3" fill="white"/>
-          <rect x="0"  y="36" width="36" height="14" rx="3" fill="white"/>
-          <!-- A -->
-          <path d="M52 84 L70 4 L88 84" stroke="white" stroke-width="14" stroke-linejoin="round" fill="none" stroke-linecap="round"/>
-          <line x1="57" y1="56" x2="83" y2="56" stroke="white" stroke-width="12" stroke-linecap="round"/>
-          <!-- P -->
-          <rect x="100" y="4" width="14" height="80" rx="3" fill="white"/>
-          <path d="M114 4 Q148 4 148 30 Q148 56 114 56" stroke="white" stroke-width="14" stroke-linejoin="round" fill="none"/>
-          <!-- Y -->
-          <line x1="162" y1="4"  x2="182" y2="38" stroke="white" stroke-width="14" stroke-linecap="round"/>
-          <line x1="202" y1="4"  x2="182" y2="38" stroke="white" stroke-width="14" stroke-linecap="round"/>
-          <line x1="182" y1="38" x2="182" y2="84" stroke="white" stroke-width="14" stroke-linecap="round"/>
+<!-- ══ SPLASH ══ -->
+<div id="screen-splash" class="screen active">
+  <div class="splash-orb splash-orb-1"></div>
+  <div class="splash-orb splash-orb-2"></div>
+  <div class="splash-orb splash-orb-3"></div>
+  <div class="splash-inner">
+    <div class="splash-logo-wrap">
+      <svg viewBox="0 0 220 88" fill="none">
+        <rect x="0"  y="4" width="14" height="80" rx="3" fill="white"/>
+        <rect x="22" y="4" width="14" height="80" rx="3" fill="white"/>
+        <rect x="0"  y="36" width="36" height="14" rx="3" fill="white"/>
+        <path d="M52 84 L70 4 L88 84" stroke="white" stroke-width="14" stroke-linejoin="round" fill="none" stroke-linecap="round"/>
+        <line x1="57" y1="56" x2="83" y2="56" stroke="white" stroke-width="12" stroke-linecap="round"/>
+        <rect x="100" y="4" width="14" height="80" rx="3" fill="white"/>
+        <path d="M114 4 Q148 4 148 30 Q148 56 114 56" stroke="white" stroke-width="14" stroke-linejoin="round" fill="none"/>
+        <line x1="162" y1="4"  x2="182" y2="38" stroke="white" stroke-width="14" stroke-linecap="round"/>
+        <line x1="202" y1="4"  x2="182" y2="38" stroke="white" stroke-width="14" stroke-linecap="round"/>
+        <line x1="182" y1="38" x2="182" y2="84" stroke="white" stroke-width="14" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <p class="splash-tagline">Be Happy, With Hapy</p>
+    <div class="splash-loader"></div>
+  </div>
+</div>
+
+<!-- ══ TERMS ══ -->
+<div id="screen-terms" class="screen">
+  <div class="status-bar light" id="terms-status">
+    <span class="status-time" id="status-time-terms" style="color:#1C1C1E"></span>
+    <div class="status-icons">
+      <svg width="16" height="12" fill="#1C1C1E" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y="1" width="3" height="11" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+      <svg width="25" height="12" fill="#1C1C1E" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="3" stroke="#1C1C1E" stroke-width="1.2" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="#1C1C1E"/><rect x="1.5" y="2.5" width="14" height="7" rx="1.5" fill="#34C759"/></svg>
+    </div>
+  </div>
+  <div class="terms-top">
+    <div class="terms-logo-sm">
+      <svg viewBox="0 0 60 30" fill="none">
+        <rect x="0" y="1" width="5.5" height="28" rx="1.5" fill="#6D28D9"/>
+        <rect x="8" y="1" width="5.5" height="28" rx="1.5" fill="#6D28D9"/>
+        <rect x="0" y="12" width="13.5" height="5" rx="1.5" fill="#6D28D9"/>
+        <path d="M18 29L25 1L32 29" stroke="#6D28D9" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="20" y1="20" x2="30" y2="20" stroke="#6D28D9" stroke-width="4.5" stroke-linecap="round"/>
+        <rect x="37" y="1" width="5.5" height="28" rx="1.5" fill="#6D28D9"/>
+        <path d="M42.5 1 Q55 1 55 11 Q55 21 42.5 21" stroke="#6D28D9" stroke-width="5.5" fill="none"/>
+      </svg>
+    </div>
+    <h2>Terms of Service &amp; Privacy</h2>
+    <p>Please review and agree to continue</p>
+  </div>
+  <div class="terms-scroll">
+    <div class="terms-group">
+      <label class="terms-item">
+        <input type="checkbox" class="terms-check" id="t1"/>
+        <div class="terms-check-box"></div>
+        <span class="terms-item-label">Terms of Service <span class="required">Required</span></span>
+        <span class="terms-arrow">›</span>
+      </label>
+      <label class="terms-item">
+        <input type="checkbox" class="terms-check" id="t2"/>
+        <div class="terms-check-box"></div>
+        <span class="terms-item-label">Collection &amp; Use of Personal Information <span class="required">Required</span></span>
+        <span class="terms-arrow">›</span>
+      </label>
+      <label class="terms-item">
+        <input type="checkbox" class="terms-check" id="t3"/>
+        <div class="terms-check-box"></div>
+        <span class="terms-item-label">Third-Party Data Disclosure <span class="required">Required</span></span>
+        <span class="terms-arrow">›</span>
+      </label>
+      <label class="terms-item">
+        <input type="checkbox" class="terms-check" id="t4"/>
+        <div class="terms-check-box"></div>
+        <span class="terms-item-label">HAPY Service Usage Notices <span class="required">Required</span></span>
+        <span class="terms-arrow">›</span>
+      </label>
+    </div>
+  </div>
+  <div class="terms-footer">
+    <p class="terms-note">⚠️ You must agree to all terms to use HAPY. Your data is stored locally and never sold.</p>
+    <button id="terms-next-btn" class="btn-primary btn-disabled" disabled onclick="goToName()">Agree &amp; Continue</button>
+  </div>
+</div>
+
+<!-- ══ NAME ══ -->
+<div id="screen-name" class="screen">
+  <div class="status-bar" id="name-status">
+    <span class="status-time" id="status-time-name" style="color:#1C1C1E"></span>
+    <div class="status-icons">
+      <svg width="16" height="12" fill="#1C1C1E" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y="1" width="3" height="11" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+      <svg width="25" height="12" fill="#1C1C1E" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="3" stroke="#1C1C1E" stroke-width="1.2" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="#1C1C1E"/><rect x="1.5" y="2.5" width="14" height="7" rx="1.5" fill="#34C759"/></svg>
+    </div>
+  </div>
+  <div class="name-content">
+    <div class="name-badge">👋</div>
+    <h2 class="name-title">Welcome to HAPY</h2>
+    <p class="name-sub">What should we call you? This helps us make your experience feel personal.</p>
+    <div class="name-field">
+      <label class="name-field-label">Your name</label>
+      <input id="name-input-screen" type="text" class="name-input" placeholder="e.g. Jiwoo" maxlength="20" onkeydown="if(event.key==='Enter')goToPHQ9()"/>
+    </div>
+  </div>
+  <div class="name-footer">
+    <button class="btn-primary" onclick="goToPHQ9()">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ PHQ-9 ══ -->
+<div id="screen-phq9" class="screen" style="background:var(--bg)">
+  <div class="status-bar">
+    <span class="status-time" id="status-time-phq" style="color:#1C1C1E"></span>
+    <div class="status-icons">
+      <svg width="16" height="12" fill="#1C1C1E" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y="1" width="3" height="11" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+      <svg width="25" height="12" fill="#1C1C1E" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="3" stroke="#1C1C1E" stroke-width="1.2" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="#1C1C1E"/><rect x="1.5" y="2.5" width="14" height="7" rx="1.5" fill="#34C759"/></svg>
+    </div>
+  </div>
+  <div class="phq9-top">
+    <button class="back-btn" onclick="showScreen('screen-name')">‹</button>
+    <div class="phq9-progress-wrap">
+      <div class="phq9-progress-bar"><div id="phq9-progress-fill" class="phq9-progress-fill" style="width:11%"></div></div>
+      <span id="phq9-step-label" class="phq9-step-label">1 / 9</span>
+    </div>
+  </div>
+  <div class="phq9-body">
+    <div class="phq9-card">
+      <div class="phq9-card-label">Over the last 2 weeks</div>
+      <h3 id="phq9-question-text" class="phq9-question"></h3>
+      <p class="phq9-note">How often have you been bothered by this?</p>
+    </div>
+    <div id="phq9-options" class="phq9-options"></div>
+  </div>
+</div>
+
+<!-- ══ RESULT ══ -->
+<div id="screen-result" class="screen">
+  <div class="status-bar"><span class="status-time" id="status-time-res" style="color:#1C1C1E"></span></div>
+  <div class="screen-scroll result-wrap">
+    <div id="result-badge" class="result-badge"></div>
+    <h2 id="result-title" class="result-title"></h2>
+    <p id="result-desc" class="result-desc"></p>
+    <div class="result-chips" id="result-chips"></div>
+    <div class="result-scale-row" id="result-scale-row">
+      <div class="scale-pill" id="scale-dawn"><div class="scale-dot" style="background:#C4B5FD"></div>Dawn</div>
+      <div class="scale-pill" id="scale-sunset"><div class="scale-dot" style="background:#6D28D9"></div>Sunset</div>
+      <div class="scale-pill" id="scale-night"><div class="scale-dot" style="background:#3B0764"></div>Night</div>
+    </div>
+    <button class="btn-primary" onclick="enterApp()">Start Using HAPY →</button>
+  </div>
+</div>
+
+<!-- ══ MAIN APP ══ -->
+<div id="screen-app" class="screen">
+
+  <!-- Status Bar (white on app) -->
+  <div class="status-bar" id="app-status-bar" style="background:var(--surface); border-bottom:1px solid var(--border2); flex-shrink:0;">
+    <span class="status-time" id="status-time-app" style="color:#1C1C1E"></span>
+    <div class="status-icons">
+      <svg width="16" height="12" fill="#1C1C1E" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1"/><rect x="4.5" y="2" width="3" height="10" rx="1"/><rect x="9" y="1" width="3" height="11" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+      <svg width="25" height="12" fill="#1C1C1E" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="3" stroke="#1C1C1E" stroke-width="1.2" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="#1C1C1E"/><rect x="1.5" y="2.5" width="14" height="7" rx="1.5" fill="#34C759"/></svg>
+    </div>
+  </div>
+
+  <!-- App Header -->
+  <div id="app-header" class="app-header">
+    <div class="app-header-left">
+      <div id="app-header-logo" class="app-header-logo" style="display:none">
+        <svg viewBox="0 0 60 26" fill="none">
+          <rect x="0" y="1" width="5" height="24" rx="1.2" fill="#6D28D9"/>
+          <rect x="7.5" y="1" width="5" height="24" rx="1.2" fill="#6D28D9"/>
+          <rect x="0" y="10" width="12.5" height="4.5" rx="1.2" fill="#6D28D9"/>
+          <path d="M16 25 L22.5 1 L29 25" stroke="#6D28D9" stroke-width="4.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="18" y1="17.5" x2="27" y2="17.5" stroke="#6D28D9" stroke-width="4" stroke-linecap="round"/>
+          <rect x="34" y="1" width="5" height="24" rx="1.2" fill="#6D28D9"/>
+          <path d="M39 1 Q51 1 51 10 Q51 19 39 19" stroke="#6D28D9" stroke-width="4.8" fill="none"/>
         </svg>
       </div>
-      <p class="splash-tagline">Be Happy, With Hapy</p>
+      <span id="app-header-title" class="app-header-title">HAPY</span>
+    </div>
+    <div id="app-header-actions" class="app-header-actions"></div>
+  </div>
+
+  <!-- ── HOME ── -->
+  <div id="page-home" class="page active">
+    <div class="page-scroll">
+      <!-- Hero -->
+      <div class="home-hero">
+        <div class="hero-top">
+          <span class="hero-greeting-sm" id="greeting-time-label">Morning</span>
+          <div class="hero-streak-badge">🔥 <span id="hero-streak">1 day</span></div>
+        </div>
+        <div class="hero-name" id="greeting-name">Good morning!</div>
+        <div class="hero-sub">How are you feeling today?</div>
+        <div class="hero-mood-prompt">
+          <div class="hero-mood-label">Tap to log your mood</div>
+          <div class="hero-mood-options">
+            <button class="hero-mood-btn" onclick="selectMood(this,'awful')"><span class="hero-mood-emoji">😔</span><span class="hero-mood-text">Awful</span></button>
+            <button class="hero-mood-btn" onclick="selectMood(this,'bad')"><span class="hero-mood-emoji">😟</span><span class="hero-mood-text">Bad</span></button>
+            <button class="hero-mood-btn" onclick="selectMood(this,'okay')"><span class="hero-mood-emoji">😐</span><span class="hero-mood-text">Okay</span></button>
+            <button class="hero-mood-btn" onclick="selectMood(this,'good')"><span class="hero-mood-emoji">😊</span><span class="hero-mood-text">Good</span></button>
+            <button class="hero-mood-btn" onclick="selectMood(this,'great')"><span class="hero-mood-emoji">😄</span><span class="hero-mood-text">Great</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="home-actions">
+        <div class="home-actions-grid">
+          <div class="action-card" onclick="switchPage('hapy',document.querySelector('[data-page=hapy]'))">
+            <div class="action-icon" style="background:#EDE9FE">💬</div>
+            <span class="action-label">Chat</span>
+          </div>
+          <div class="action-card" onclick="openBreathing()">
+            <div class="action-icon" style="background:#DCFCE7">🌬️</div>
+            <span class="action-label">Breathe</span>
+          </div>
+          <div class="action-card" onclick="openChallenges()">
+            <div class="action-icon" style="background:#FEF9C3">🎯</div>
+            <span class="action-label">Challenge</span>
+          </div>
+          <div class="action-card" onclick="switchPage('magazine',document.querySelector('[data-page=magazine]'))">
+            <div class="action-icon" style="background:#FEE2E2">📖</div>
+            <span class="action-label">Read</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tip of the Day -->
+      <div id="tip-card" class="tip-card">
+        <div class="tip-icon-wrap">💡</div>
+        <div class="tip-body">
+          <div class="tip-label">Tip of the Day</div>
+          <div class="tip-text" id="tip-text">Loading...</div>
+        </div>
+        <span class="tip-arrow">›</span>
+      </div>
+
+      <!-- What's New -->
+      <div class="home-section">
+        <div class="section-header">
+          <span class="section-title">What's New</span>
+        </div>
+        <div id="home-whats-new" class="whats-new-card"></div>
+      </div>
+
+      <!-- Recommended -->
+      <div class="home-section">
+        <div class="section-header">
+          <span class="section-title">Recommended for You</span>
+          <span class="section-more" onclick="switchPage('magazine',document.querySelector('[data-page=magazine]'))">See all</span>
+        </div>
+        <div id="home-recs" class="rec-row"></div>
+      </div>
+
+      <!-- Highlights -->
+      <div class="home-section">
+        <div class="section-header">
+          <span class="section-title">Community Highlights</span>
+          <span class="section-more" onclick="switchPage('community',document.querySelector('[data-page=community]'))">See all</span>
+        </div>
+        <div id="home-highlights" class="highlight-list"></div>
+      </div>
     </div>
   </div>
 
-  <!-- ══════════ TERMS ══════════ -->
-  <div id="screen-terms" class="screen">
-    <div class="screen-scroll">
-      <div class="terms-header">
-        <div class="terms-logo-sm">
-          <svg viewBox="0 0 60 30" fill="none">
-            <rect x="0" y="1" width="5.5" height="28" rx="1.5" fill="#7C3AED"/>
-            <rect x="8" y="1" width="5.5" height="28" rx="1.5" fill="#7C3AED"/>
-            <rect x="0" y="12" width="13.5" height="5" rx="1.5" fill="#7C3AED"/>
-            <path d="M18 29L25 1L32 29" stroke="#7C3AED" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="20" y1="20" x2="30" y2="20" stroke="#7C3AED" stroke-width="4.5" stroke-linecap="round"/>
-            <rect x="37" y="1" width="5.5" height="28" rx="1.5" fill="#7C3AED"/>
-            <path d="M42.5 1 Q55 1 55 11 Q55 21 42.5 21" stroke="#7C3AED" stroke-width="5.5" fill="none"/>
-          </svg>
+  <!-- ── COMMUNITY ── -->
+  <div id="page-community" class="page">
+    <div id="community-main" class="page-scroll">
+      <div id="community-challenge-banner" class="comm-banner"></div>
+      <div class="comm-section">
+        <div class="comm-section-title">My Content</div>
+        <div class="my-content-grid">
+          <div class="my-content-card" onclick="openMyContent('articles')"><div class="my-content-icon" style="background:#EDE9FE">📄</div>My Articles</div>
+          <div class="my-content-card" onclick="openMyContent('comments')"><div class="my-content-icon" style="background:#FEF9C3">💬</div>My Comments</div>
+          <div class="my-content-card" onclick="openMyContent('saved')"><div class="my-content-icon" style="background:#DBEAFE">🔖</div>Saved</div>
+          <div class="my-content-card" onclick="openMyContent('liked')"><div class="my-content-icon" style="background:#FCE7F3">❤️</div>Liked</div>
         </div>
-        <h2>Terms of Service &amp; Privacy Policy</h2>
-        <p>Please review and agree to continue</p>
       </div>
-      <div class="terms-items">
-        <label class="terms-item">
-          <input type="checkbox" class="terms-check" id="t1"/>
-          <div class="terms-check-box"></div>
-          <div class="terms-item-text">
-            <div class="terms-item-label">Terms of Service <span class="required">Required</span></div>
-          </div>
-          <span class="terms-arrow">›</span>
-        </label>
-        <label class="terms-item">
-          <input type="checkbox" class="terms-check" id="t2"/>
-          <div class="terms-check-box"></div>
-          <div class="terms-item-text">
-            <div class="terms-item-label">Collection &amp; Use of Personal Information <span class="required">Required</span></div>
-          </div>
-          <span class="terms-arrow">›</span>
-        </label>
-        <label class="terms-item">
-          <input type="checkbox" class="terms-check" id="t3"/>
-          <div class="terms-check-box"></div>
-          <div class="terms-item-text">
-            <div class="terms-item-label">Third-Party Data Disclosure <span class="required">Required</span></div>
-          </div>
-          <span class="terms-arrow">›</span>
-        </label>
-        <label class="terms-item">
-          <input type="checkbox" class="terms-check" id="t4"/>
-          <div class="terms-check-box"></div>
-          <div class="terms-item-text">
-            <div class="terms-item-label">HAPY Service Usage Notices <span class="required">Required</span></div>
-          </div>
-          <span class="terms-arrow">›</span>
-        </label>
-      </div>
-      <p class="terms-warning">⚠️ You must agree to all required terms to use HAPY. Your data is protected and never sold to third parties.</p>
-      <button id="terms-next-btn" class="btn-primary btn-disabled" disabled onclick="goToName()">Agree &amp; Continue</button>
+      <div style="padding:0 16px 8px"><span class="comm-section-title">Boards</span></div>
+      <div id="board-list" class="board-grid"></div>
     </div>
-  </div>
-
-  <!-- ══════════ NAME INPUT ══════════ -->
-  <div id="screen-name" class="screen">
-    <div class="name-wrap">
-      <div class="name-emoji">👋</div>
-      <h2 class="name-title">Welcome to HAPY!</h2>
-      <p class="name-subtitle">What should we call you? This helps us personalize your experience.</p>
-      <div class="name-input-wrap">
-        <input id="name-input-screen" type="text" class="name-input" placeholder="Your name or nickname" maxlength="20"
-          onkeydown="if(event.key==='Enter')goToPHQ9()"/>
+    <div id="community-postlist" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+      <div class="sub-header">
+        <button class="back-btn-sm" onclick="showCommunityMain()">‹</button>
+        <span id="postlist-title" class="sub-title"></span>
+        <button class="write-fab" onclick="openWritePost()">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="white"/></svg>
+        </button>
       </div>
-      <button class="btn-primary" onclick="goToPHQ9()">Continue →</button>
+      <div id="post-list" class="page-scroll"></div>
     </div>
-  </div>
-
-  <!-- ══════════ PHQ-9 ══════════ -->
-  <div id="screen-phq9" class="screen">
-    <div class="phq9-header">
-      <button class="back-btn" onclick="showScreen('screen-name')">‹</button>
-      <div class="phq9-progress-wrap">
-        <div class="phq9-progress-bar">
-          <div id="phq9-progress-fill" class="phq9-progress-fill" style="width:11%"></div>
-        </div>
-        <span id="phq9-step-label" class="phq9-step-label">1 / 9</span>
+    <div id="community-post-detail" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+      <div class="sub-header">
+        <button class="back-btn-sm" onclick="showPostList()">‹</button>
+        <span class="sub-title">Post</span>
       </div>
-    </div>
-    <div class="phq9-body">
-      <div class="phq9-intro-text">Over the last 2 weeks, how often have you been bothered by the following?</div>
-      <h3 id="phq9-question-text" class="phq9-question"></h3>
-      <div id="phq9-options" class="phq9-options"></div>
-    </div>
-  </div>
-
-  <!-- ══════════ RESULT ══════════ -->
-  <div id="screen-result" class="screen">
-    <div class="screen-scroll result-wrap">
-      <div id="result-badge" class="result-badge"></div>
-      <h2 id="result-title" class="result-title"></h2>
-      <p id="result-desc" class="result-desc"></p>
-      <div class="result-scale-title">Your Depression Scale</div>
-      <div class="result-scale">
-        <div class="scale-item" id="scale-dawn">
-          <div class="scale-dot" style="background:#C4B5FD"></div><span>Dawn</span>
-        </div>
-        <div class="scale-item" id="scale-sunset">
-          <div class="scale-dot" style="background:#7C3AED"></div><span>Sunset</span>
-        </div>
-        <div class="scale-item" id="scale-night">
-          <div class="scale-dot" style="background:#3B0764"></div><span>Night</span>
-        </div>
-      </div>
-      <div class="result-type-title">Your Depression Type</div>
-      <div id="result-type-chip" class="result-type-chip"></div>
-      <p class="result-type-note">Based on your responses. You can update this anytime in Profile.</p>
-      <button class="btn-primary" style="margin-top:32px" onclick="enterApp()">Start Using HAPY →</button>
-    </div>
-  </div>
-
-  <!-- ══════════ MAIN APP ══════════ -->
-  <div id="screen-app" class="screen">
-
-    <!-- App Header (dynamic) -->
-    <div id="app-header" class="app-header">
-      <div class="app-header-left">
-        <div id="app-header-logo" class="app-header-logo" style="display:none">
-          <svg viewBox="0 0 60 26" fill="none">
-            <rect x="0" y="1" width="5" height="24" rx="1.2" fill="#7C3AED"/>
-            <rect x="7.5" y="1" width="5" height="24" rx="1.2" fill="#7C3AED"/>
-            <rect x="0" y="10" width="12.5" height="4.5" rx="1.2" fill="#7C3AED"/>
-            <path d="M16 25 L22.5 1 L29 25" stroke="#7C3AED" stroke-width="4.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="18" y1="17.5" x2="27" y2="17.5" stroke="#7C3AED" stroke-width="4" stroke-linecap="round"/>
-            <rect x="34" y="1" width="5" height="24" rx="1.2" fill="#7C3AED"/>
-            <path d="M39 1 Q51 1 51 10 Q51 19 39 19" stroke="#7C3AED" stroke-width="4.8" fill="none"/>
-          </svg>
-        </div>
-        <span id="app-header-title" class="app-header-title">HAPY</span>
-      </div>
-      <div id="app-header-actions" class="app-header-actions"></div>
-    </div>
-
-    <!-- ── HOME ── -->
-    <div id="page-home" class="page active">
-      <div class="page-scroll">
-        <!-- Greeting Card -->
-        <div id="home-greeting-card" class="home-greeting-card">
-          <div class="greeting-top">
-            <span class="greeting-time" id="greeting-time-label"></span>
-            <span></span>
-          </div>
-          <div class="greeting-name" id="greeting-name">Good morning!</div>
-          <div class="greeting-sub" id="greeting-sub">How are you feeling today?</div>
-          <div class="greeting-streak">
-            <span class="streak-flame">🔥</span>
-            <span id="greeting-streak-text">Day 1 streak</span>
-          </div>
-        </div>
-
-        <!-- Mood Check-in -->
-        <div class="mood-section">
-          <div class="mood-title">Today's Mood</div>
-          <div class="mood-card">
-            <div class="mood-label">How are you feeling right now?</div>
-            <div class="mood-options">
-              <button class="mood-btn" onclick="selectMood(this, 'awful')">
-                <span class="mood-emoji">😔</span>
-                <span class="mood-text">Awful</span>
-              </button>
-              <button class="mood-btn" onclick="selectMood(this, 'bad')">
-                <span class="mood-emoji">😟</span>
-                <span class="mood-text">Bad</span>
-              </button>
-              <button class="mood-btn" onclick="selectMood(this, 'okay')">
-                <span class="mood-emoji">😐</span>
-                <span class="mood-text">Okay</span>
-              </button>
-              <button class="mood-btn" onclick="selectMood(this, 'good')">
-                <span class="mood-emoji">😊</span>
-                <span class="mood-text">Good</span>
-              </button>
-              <button class="mood-btn" onclick="selectMood(this, 'great')">
-                <span class="mood-emoji">😄</span>
-                <span class="mood-text">Great</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- What's New -->
-        <section class="home-section">
-          <div class="home-section-label">What's New</div>
-          <div id="home-whats-new" class="home-banner-card"></div>
-        </section>
-
-        <!-- Recommended -->
-        <section class="home-section">
-          <div class="home-section-label">Recommended for You</div>
-          <div id="home-recs" class="home-recs-grid"></div>
-        </section>
-
-        <!-- Community Highlights -->
-        <section class="home-section">
-          <div class="home-section-label">Community Highlights</div>
-          <div id="home-highlights" class="home-highlights"></div>
-        </section>
-      </div>
-    </div>
-
-    <!-- ── COMMUNITY ── -->
-    <div id="page-community" class="page">
-      <div id="community-main" class="page-scroll">
-        <div id="community-challenge-banner" class="challenge-banner"></div>
-        <div class="comm-section">
-          <div class="comm-section-title">My Content</div>
-          <div class="my-content-grid">
-            <div class="my-content-item" onclick="openMyContent('articles')">
-              <div class="mc-icon-wrap" style="background:#EDE9FE">📄</div>
-              <span>My Articles</span>
-            </div>
-            <div class="my-content-item" onclick="openMyContent('comments')">
-              <div class="mc-icon-wrap" style="background:#FEF3C7">💬</div>
-              <span>My Comments</span>
-            </div>
-            <div class="my-content-item" onclick="openMyContent('saved')">
-              <div class="mc-icon-wrap" style="background:#DBEAFE">🔖</div>
-              <span>Saved</span>
-            </div>
-            <div class="my-content-item" onclick="openMyContent('liked')">
-              <div class="mc-icon-wrap" style="background:#FCE7F3">❤️</div>
-              <span>Liked</span>
-            </div>
-          </div>
-        </div>
-        <div class="comm-section-title" style="padding:0 20px 0">Boards</div>
-        <div id="board-list" class="board-grid"></div>
-      </div>
-
-      <!-- Post list view -->
-      <div id="community-postlist" class="page-scroll" style="display:none; flex-direction:column">
-        <div class="sub-header">
-          <button class="back-btn-sm" onclick="showCommunityMain()">‹</button>
-          <span id="postlist-title" class="sub-header-title"></span>
-          <button class="write-btn" onclick="openWritePost()">✏️</button>
-        </div>
-        <div id="post-list" class="post-list"></div>
-      </div>
-
-      <!-- Post detail view -->
-      <div id="community-post-detail" class="page-scroll" style="display:none; flex-direction:column">
-        <div class="sub-header">
-          <button class="back-btn-sm" onclick="showPostList()">‹</button>
-          <span class="sub-header-title">Post</span>
-        </div>
-        <div id="post-detail-content"></div>
-        <div class="comment-input-wrap">
-          <input id="comment-input" type="text" class="comment-input" placeholder="Write a comment..."/>
-          <button class="comment-send-btn" onclick="submitComment()">↑</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── HAPY AI ── -->
-    <div id="page-hapy" class="page hapy-page">
-      <!-- Custom chat header -->
-      <div class="chat-header">
-        <div class="chat-header-info">
-          <div class="chat-header-avatar">
-            <svg viewBox="0 0 60 26" fill="none">
-              <rect x="0" y="1" width="5" height="24" rx="1.2" fill="white"/>
-              <rect x="7.5" y="1" width="5" height="24" rx="1.2" fill="white"/>
-              <rect x="0" y="10" width="12.5" height="4.5" rx="1.2" fill="white"/>
-              <path d="M16 25 L22.5 1 L29 25" stroke="white" stroke-width="4.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="18" y1="17.5" x2="27" y2="17.5" stroke="white" stroke-width="4" stroke-linecap="round"/>
-              <rect x="34" y="1" width="5" height="24" rx="1.2" fill="white"/>
-              <path d="M39 1 Q51 1 51 10 Q51 19 39 19" stroke="white" stroke-width="4.8" fill="none"/>
-            </svg>
-          </div>
-          <div>
-            <div class="chat-header-name">HAPY AI</div>
-            <div class="chat-header-status">
-              <span class="status-dot"></span> Always here for you
-            </div>
-          </div>
-        </div>
-        <div style="display:flex;gap:8px">
-          <button class="header-icon-btn" onclick="startCall()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg>
-          </button>
-        </div>
-      </div>
-      <div id="chat-messages" class="chat-messages">
-        <div class="chat-date-divider">Today</div>
-      </div>
-      <div class="chat-input-bar">
-        <input id="chat-input" type="text" class="chat-input" placeholder="Talk to HAPY..." onkeydown="handleChatKey(event)"/>
-        <button class="chat-send-btn" onclick="sendChatMessage()">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10L18 2L10 18L9 11L2 10Z" fill="white"/></svg>
+      <div id="post-detail-content" class="page-scroll"></div>
+      <div class="comment-bar">
+        <input id="comment-input" type="text" class="comment-input" placeholder="Write a comment..."/>
+        <button class="comment-send" onclick="submitComment()">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M2 21L23 12 2 3v7l15 2-15 2v7z" fill="white"/></svg>
         </button>
       </div>
     </div>
+  </div>
 
-    <!-- ── MAGAZINE ── -->
-    <div id="page-magazine" class="page">
-      <div id="magazine-main" class="page-scroll">
-        <div class="magazine-header">
-          <h2>Magazine</h2>
-          <p>Expert content for your mental wellbeing</p>
-        </div>
-        <div id="magazine-featured-wrap"></div>
-        <div id="magazine-list" class="magazine-grid"></div>
-      </div>
-      <div id="magazine-detail" class="page-scroll" style="display:none">
-        <div class="sub-header">
-          <button class="back-btn-sm" onclick="showMagazineMain()">‹</button>
-          <span class="sub-header-title">Article</span>
-        </div>
-        <div id="magazine-article-content"></div>
-      </div>
-    </div>
-
-    <!-- ── PROFILE ── -->
-    <div id="page-profile" class="page">
-      <div class="page-scroll">
-        <!-- Profile Hero -->
-        <div class="profile-hero">
-          <div class="profile-avatar-wrap">
-            <div id="profile-avatar" class="profile-avatar">😊</div>
-            <button class="profile-edit-avatar" onclick="changeAvatar()">✏️</button>
-          </div>
-          <div id="profile-username" class="profile-username">HAPY User</div>
-          <div class="profile-stickers" id="profile-stickers"></div>
-          <!-- Stats Row -->
-          <div class="profile-stats">
-            <div class="profile-stat">
-              <span id="stat-streak" class="profile-stat-val">1</span>
-              <span class="profile-stat-label">Day Streak</span>
-            </div>
-            <div class="profile-stat">
-              <span id="stat-score" class="profile-stat-val">—</span>
-              <span class="profile-stat-label">PHQ-9</span>
-            </div>
-            <div class="profile-stat">
-              <span id="stat-plan" class="profile-stat-val">Free</span>
-              <span class="profile-stat-label">Plan</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Crisis Button -->
-        <div style="padding:20px 20px 0">
-          <button class="crisis-btn" onclick="openCrisis()">
-            <span class="crisis-icon">🆘</span>
-            <div class="crisis-text">
-              <strong>Crisis Support</strong>
-              <span>24/7 emergency mental health resources</span>
-            </div>
-          </button>
-        </div>
-
-        <!-- Menu -->
-        <div class="profile-menu-section">
-          <div class="profile-menu-title">Activity</div>
-          <div class="profile-menu">
-            <div class="profile-menu-item" onclick="openChallenges()">
-              <div class="pm-icon-wrap" style="background:#F5F3FF">🎯</div>
-              <span class="pm-label">My Challenges</span>
-              <span class="pm-arrow">›</span>
-            </div>
-            <div class="profile-menu-item" onclick="openMoodHistory()">
-              <div class="pm-icon-wrap" style="background:#FEF9C3">📊</div>
-              <span class="pm-label">Mood History</span>
-              <span class="pm-arrow">›</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="profile-menu-section">
-          <div class="profile-menu-title">Account</div>
-          <div class="profile-menu">
-            <div class="profile-menu-item" onclick="openSubscription()">
-              <div class="pm-icon-wrap" style="background:#FEF3C7">⭐</div>
-              <span class="pm-label">Subscription Plan</span>
-              <span class="pm-badge" id="sub-badge">Basic</span>
-            </div>
-            <div class="profile-menu-item" onclick="openDepScale()">
-              <div class="pm-icon-wrap" style="background:#EDE9FE">🧠</div>
-              <span class="pm-label">Depression Scale Info</span>
-              <span class="pm-arrow">›</span>
-            </div>
-            <div class="profile-menu-item" onclick="openSettings()">
-              <div class="pm-icon-wrap" style="background:#F3F4F6">⚙️</div>
-              <span class="pm-label">Settings</span>
-              <span class="pm-arrow">›</span>
-            </div>
-            <div class="profile-menu-item" onclick="openQA()">
-              <div class="pm-icon-wrap" style="background:#E0F2FE">❓</div>
-              <span class="pm-label">Help &amp; FAQ</span>
-              <span class="pm-arrow">›</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="profile-menu-section">
-          <div class="profile-menu">
-            <div class="profile-menu-item" onclick="retakeTest()">
-              <div class="pm-icon-wrap" style="background:#FEE2E2">🔄</div>
-              <span class="pm-label danger" style="color:#EF4444">Retake PHQ-9 Test</span>
-              <span class="pm-arrow">›</span>
-            </div>
-          </div>
-        </div>
-        <div style="height:20px"></div>
-      </div>
-    </div>
-
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-      <div class="nav-item active" data-page="home" onclick="switchPage('home', this)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V9.5Z" fill="currentColor"/></svg>
-        <span>Home</span>
-      </div>
-      <div class="nav-item" data-page="community" onclick="switchPage('community', this)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="currentColor"/></svg>
-        <span>Community</span>
-      </div>
-      <div class="nav-item nav-center" data-page="hapy" onclick="switchPage('hapy', this)">
-        <div class="nav-center-btn">
-          <!-- HAPY Logo in Nav -->
-          <svg viewBox="0 0 60 26" fill="none" width="30" height="14">
+  <!-- ── HAPY AI ── -->
+  <div id="page-hapy" class="page hapy-page">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar-lg">
+          <svg viewBox="0 0 60 26" fill="none">
             <rect x="0" y="1" width="5" height="24" rx="1.2" fill="white"/>
             <rect x="7.5" y="1" width="5" height="24" rx="1.2" fill="white"/>
             <rect x="0" y="10" width="12.5" height="4.5" rx="1.2" fill="white"/>
@@ -472,26 +329,138 @@
             <path d="M39 1 Q51 1 51 10 Q51 19 39 19" stroke="white" stroke-width="4.8" fill="none"/>
           </svg>
         </div>
-        <span>HAPY</span>
+        <div>
+          <div class="chat-header-name">HAPY AI</div>
+          <div class="chat-header-status"><span class="online-dot"></span>Always here for you</div>
+        </div>
       </div>
-      <div class="nav-item" data-page="magazine" onclick="switchPage('magazine', this)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM5 19V5H11V19H5ZM19 19H13V12H19V19ZM19 10H13V5H19V10Z" fill="currentColor"/></svg>
-        <span>Magazine</span>
-      </div>
-      <div class="nav-item" data-page="profile" onclick="switchPage('profile', this)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/></svg>
-        <span>Profile</span>
-      </div>
-    </nav>
+      <button class="icon-btn" onclick="startCall()">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg>
+      </button>
+    </div>
+    <div id="chat-messages" class="chat-messages"><div class="chat-date-pill">Today</div></div>
+    <div id="chat-suggestions" class="chat-suggestions"></div>
+    <div class="chat-input-bar">
+      <input id="chat-input" type="text" class="chat-input" placeholder="Talk to HAPY..." onkeydown="handleChatKey(event)"/>
+      <button class="chat-send" onclick="sendChatMessage()">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M2 21L23 12 2 3v7l15 2-15 2v7z" fill="white"/></svg>
+      </button>
+    </div>
+  </div>
 
-  </div><!-- /#screen-app -->
+  <!-- ── MAGAZINE ── -->
+  <div id="page-magazine" class="page">
+    <div id="magazine-main" class="page-scroll">
+      <div class="mag-header"><h2>Magazine</h2><p>Expert content for your wellbeing</p></div>
+      <div id="magazine-featured-wrap"></div>
+      <div id="magazine-list" class="mag-grid"></div>
+    </div>
+    <div id="magazine-detail" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+      <div class="sub-header">
+        <button class="back-btn-sm" onclick="showMagazineMain()">‹</button>
+        <span class="sub-title">Article</span>
+      </div>
+      <div id="magazine-article-content" class="page-scroll"></div>
+    </div>
+  </div>
 
-  <!-- ══════════ CALL OVERLAY ══════════ -->
-  <div id="call-overlay" class="call-overlay" style="display:none">
-    <div class="call-bg"></div>
-    <div class="call-content">
-      <div class="call-avatar-lg">
-        <svg viewBox="0 0 60 26" fill="none">
+  <!-- ── PROFILE ── -->
+  <div id="page-profile" class="page">
+    <div class="page-scroll">
+      <div class="profile-hero">
+        <div class="profile-avatar-wrap">
+          <div id="profile-avatar" class="profile-avatar">😊</div>
+          <button class="profile-edit-btn" onclick="changeAvatar()">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="white"/></svg>
+          </button>
+        </div>
+        <div id="profile-username" class="profile-name">HAPY User</div>
+        <div class="profile-chips" id="profile-stickers"></div>
+        <div class="profile-stats">
+          <div class="profile-stat"><span id="stat-streak" class="stat-val">1</span><span class="stat-label">Streak</span></div>
+          <div class="profile-stat"><span id="stat-score" class="stat-val">—</span><span class="stat-label">PHQ-9</span></div>
+          <div class="profile-stat"><span id="stat-plan" class="stat-val">Free</span><span class="stat-label">Plan</span></div>
+        </div>
+      </div>
+
+      <div style="padding:16px 16px 0">
+        <button class="crisis-card" onclick="openCrisis()">
+          <span class="crisis-icon">🆘</span>
+          <div class="crisis-text">
+            <strong>Crisis Support</strong>
+            <span>24/7 emergency mental health resources</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="profile-sections">
+        <div class="profile-section-title">Activity</div>
+        <div class="profile-group">
+          <div class="profile-row" onclick="openChallenges()">
+            <div class="row-icon" style="background:#EDE9FE">🎯</div>
+            <span class="row-label">My Challenges</span>
+            <span class="row-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="profile-row" onclick="openMoodHistory()">
+            <div class="row-icon" style="background:#FEF9C3">📊</div>
+            <span class="row-label">Mood History</span>
+            <span class="row-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-sections" style="padding-top:4px">
+        <div class="profile-section-title">Account</div>
+        <div class="profile-group">
+          <div class="profile-row" onclick="openSubscription()">
+            <div class="row-icon" style="background:#FEF3C7">⭐</div>
+            <span class="row-label">Subscription Plan</span>
+            <span class="row-badge" id="sub-badge">Basic</span>
+          </div>
+          <div class="profile-row" onclick="openDepScale()">
+            <div class="row-icon" style="background:#EDE9FE">🧠</div>
+            <span class="row-label">Depression Scale Info</span>
+            <span class="row-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="profile-row" onclick="openSettings()">
+            <div class="row-icon" style="background:#F3F4F6">⚙️</div>
+            <span class="row-label">Settings</span>
+            <span class="row-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="profile-row" onclick="openQA()">
+            <div class="row-icon" style="background:#E0F2FE">❓</div>
+            <span class="row-label">Help &amp; FAQ</span>
+            <span class="row-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-sections" style="padding-top:4px">
+        <div class="profile-group">
+          <div class="profile-row danger" onclick="retakeTest()">
+            <div class="row-icon" style="background:#FEE2E2">🔄</div>
+            <span class="row-label">Retake PHQ-9 Test</span>
+            <span class="row-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+      <div style="height:24px"></div>
+    </div>
+  </div>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-page="home" onclick="switchPage('home',this)">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V9.5Z" fill="currentColor"/></svg>
+      <span>Home</span>
+    </div>
+    <div class="nav-item" data-page="community" onclick="switchPage('community',this)">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="currentColor"/></svg>
+      <span>Community</span>
+    </div>
+    <div class="nav-item nav-center" data-page="hapy" onclick="switchPage('hapy',this)">
+      <div class="nav-fab">
+        <svg viewBox="0 0 60 26" fill="none" width="28" height="13">
           <rect x="0" y="1" width="5" height="24" rx="1.2" fill="white"/>
           <rect x="7.5" y="1" width="5" height="24" rx="1.2" fill="white"/>
           <rect x="0" y="10" width="12.5" height="4.5" rx="1.2" fill="white"/>
@@ -501,46 +470,65 @@
           <path d="M39 1 Q51 1 51 10 Q51 19 39 19" stroke="white" stroke-width="4.8" fill="none"/>
         </svg>
       </div>
-      <div class="call-name-lg">HAPY AI</div>
-      <div class="call-subtitle">Mental Health Companion</div>
-      <div id="call-status" class="call-status-lg">Connecting...</div>
-      <div id="call-timer" class="call-timer" style="display:none">00:00</div>
-      <div class="call-controls">
-        <button class="call-ctrl-btn" onclick="toggleMute()">
-          <span id="mute-icon">🔊</span><span>Speaker</span>
-        </button>
-        <button class="call-ctrl-btn" onclick="toggleMute()">
-          <span>🎙️</span><span>Mute</span>
-        </button>
-      </div>
-      <button class="call-end-btn" onclick="endCall()">📞</button>
+      <span>HAPY</span>
     </div>
-  </div>
-
-  <!-- ══════════ MODAL ══════════ -->
-  <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
-    <div id="modal-sheet" class="modal-sheet">
-      <div id="modal-body"></div>
+    <div class="nav-item" data-page="magazine" onclick="switchPage('magazine',this)">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM5 19V5H11V19H5ZM19 19H13V12H19V19ZM19 10H13V5H19V10Z" fill="currentColor"/></svg>
+      <span>Magazine</span>
     </div>
-  </div>
-
-  <!-- ══════════ WRITE POST ══════════ -->
-  <div id="write-post-overlay" class="modal-overlay" style="display:none">
-    <div class="modal-sheet write-sheet">
-      <div class="write-header">
-        <button class="write-close-btn" onclick="closeWritePost()">✕</button>
-        <span>New Post</span>
-        <button class="write-submit-btn" onclick="submitPost()">Post</button>
-      </div>
-      <input id="write-title" type="text" class="write-input-title" placeholder="Title"/>
-      <textarea id="write-body" class="write-input-body" placeholder="Share your thoughts..."></textarea>
+    <div class="nav-item" data-page="profile" onclick="switchPage('profile',this)">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/></svg>
+      <span>Profile</span>
     </div>
+  </nav>
+</div>
+
+<!-- ══ CALL ══ -->
+<div id="call-overlay" class="call-overlay" style="display:none">
+  <div class="call-content">
+    <div class="call-avatar">
+      <svg viewBox="0 0 60 26" fill="none" width="52">
+        <rect x="0" y="1" width="5" height="24" rx="1.2" fill="white"/>
+        <rect x="7.5" y="1" width="5" height="24" rx="1.2" fill="white"/>
+        <rect x="0" y="10" width="12.5" height="4.5" rx="1.2" fill="white"/>
+        <path d="M16 25 L22.5 1 L29 25" stroke="white" stroke-width="4.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="18" y1="17.5" x2="27" y2="17.5" stroke="white" stroke-width="4" stroke-linecap="round"/>
+        <rect x="34" y="1" width="5" height="24" rx="1.2" fill="white"/>
+        <path d="M39 1 Q51 1 51 10 Q51 19 39 19" stroke="white" stroke-width="4.8" fill="none"/>
+      </svg>
+    </div>
+    <div class="call-name">HAPY AI</div>
+    <div class="call-subtitle">Mental Health Companion</div>
+    <div id="call-status" class="call-status">Connecting...</div>
+    <div id="call-timer" class="call-timer" style="display:none">00:00</div>
+    <div class="call-controls">
+      <button class="call-ctrl" onclick="toggleMute()"><span class="call-ctrl-icon" id="mute-icon">🔊</span><span>Speaker</span></button>
+      <button class="call-ctrl" onclick="toggleMute()"><span class="call-ctrl-icon">🎙️</span><span>Mute</span></button>
+    </div>
+    <button class="call-end" onclick="endCall()">📞</button>
   </div>
+</div>
 
-  <!-- ══════════ TOAST ══════════ -->
-  <div id="toast" class="toast"></div>
+<!-- ══ MODAL ══ -->
+<div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
+  <div id="modal-sheet" class="modal-sheet"><div id="modal-body"></div></div>
+</div>
 
-</div><!-- /#app -->
+<!-- ══ WRITE POST ══ -->
+<div id="write-post-overlay" style="position:absolute;inset:0;z-index:150;background:rgba(0,0,0,.4);display:none;align-items:flex-end;">
+  <div style="background:#fff;border-radius:28px 28px 0 0;width:100%;animation:sheetUp .3s cubic-bezier(.34,1.1,.64,1)">
+    <div class="write-sheet-header">
+      <button class="write-close" onclick="closeWritePost()">Cancel</button>
+      <span class="write-header-title">New Post</span>
+      <button class="write-post-btn" onclick="submitPost()">Post</button>
+    </div>
+    <input id="write-title" type="text" class="write-title-input" placeholder="Title"/>
+    <textarea id="write-body" class="write-body-input" placeholder="Share your thoughts..."></textarea>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+</div>
 
 <script src="js/app.js"></script>
 </body>
